@@ -14,8 +14,8 @@ public class Test {
         } catch (SyntaxError e) {
             e.printStackTrace();
         }
-        r.test("TI like Hormel spam");
-        r.test("I don't ?like Spamco spam");
+        r.test("I like Hormel spam");
+        r.test("I don't like Spamco spam");
         r.test("I like bacon for dinner");
         r.test("I like eggs");
         r.test("I don't like eggs for lunch");

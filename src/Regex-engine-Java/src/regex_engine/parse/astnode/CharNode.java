@@ -10,6 +10,10 @@ public class CharNode implements ASTNode {
 		c = theChar;
 	}
 
+	public CharNode(String st){
+		c = st.charAt(0);
+	}
+
 	@Override
 	public String toString() {
 		return String.valueOf(c);

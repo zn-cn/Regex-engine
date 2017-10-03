@@ -1,7 +1,7 @@
 package regex_engine.parse.astnode;
 
 // $
-public class OverPosNode {
+public class OverPosNode implements ASTNode{
     private ASTNode node;
 
     public OverPosNode(ASTNode n){

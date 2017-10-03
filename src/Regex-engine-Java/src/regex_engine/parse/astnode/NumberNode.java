@@ -1,19 +1,20 @@
 package regex_engine.parse.astnode;
 
-// []
-public class OneCharRangeNode implements ASTNode{
+// "\\d"
+// 匹配一个数字字符
+public class NumberNode implements ASTNode {
     private ASTNode node;
 
-    public OneCharRangeNode(ASTNode n){
+    public NumberNode(ASTNode n){
         node = n;
     }
 
     @Override
     public String toString(){
-        return "[" + node + "]";
+        return "\\d";
     }
 
-    public ASTNode getNode() {
+    public ASTNode getNode(){
         return node;
     }
 

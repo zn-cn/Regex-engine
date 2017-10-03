@@ -1,7 +1,7 @@
 package regex_engine.parse.astnode;
 
 // ^
-public class StartPosNode {
+public class StartPosNode implements ASTNode {
     private ASTNode node;
 
     public StartPosNode(ASTNode n){

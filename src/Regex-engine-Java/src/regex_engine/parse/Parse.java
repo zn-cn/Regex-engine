@@ -41,30 +41,30 @@ public class Parse {
         LinkedList<Token> tokens = new LinkedList<>();
         boolean afterBackslash = false;
         for(int i=0; i < in.length(); i++) {
-            char next = in.charAt(i);
+            String next = String.valueOf(in.charAt(i));
             switch(next) {
-                case '\\':
+                case "\\":
                     if(afterBackslash) {
                         tokens.add(new Token(next,TokenType.CHAR,i));
                         afterBackslash = false;
                     } else
                         afterBackslash = true;
                     break;
-                case '^':
+                case "^":
                     if (afterBackslash){
                         tokens.add(new Token(next, TokenType.CHAR, i));
                         afterBackslash = false;
                     } else {
                         tokens.add(new Token(next, TokenType.SYMBOL, i));
                     }
-                case '$':
+                case "$":
                     if (afterBackslash){
                         tokens.add(new Token(next, TokenType.CHAR, i));
                         afterBackslash = false;
                     } else {
                         tokens.add(new Token(next, TokenType.SYMBOL, i));
                     }
-                case '(':
+                case "(":
                     if(afterBackslash) {
                         tokens.add(new Token(next,TokenType.CHAR,i));
                         afterBackslash = false;
@@ -73,7 +73,7 @@ public class Parse {
                         symmetry.push('(');
                     }
                     break;
-                case ')':
+                case ")":
                     if(afterBackslash) {
                         tokens.add(new Token(next,TokenType.CHAR,i));
                         afterBackslash = false;
@@ -86,7 +86,7 @@ public class Parse {
                         }
                     }
                     break;
-                case '[':
+                case "[":
                     if(afterBackslash) {
                         tokens.add(new Token(next,TokenType.CHAR,i));
                         afterBackslash = false;
@@ -95,7 +95,7 @@ public class Parse {
                         symmetry.push('[');
                     }
                     break;
-                case ']':
+                case "]":
                     if(afterBackslash) {
                         tokens.add(new Token(next,TokenType.CHAR,i));
                         afterBackslash = false;
@@ -108,7 +108,7 @@ public class Parse {
                         }
                     }
                     break;
-                case '{':
+                case "{":
                     if(afterBackslash) {
                         tokens.add(new Token(next,TokenType.CHAR,i));
                         afterBackslash = false;
@@ -117,7 +117,7 @@ public class Parse {
                         symmetry.push('{');
                     }
                     break;
-                case '}':
+                case "}":
                     if(afterBackslash) {
                         tokens.add(new Token(next,TokenType.CHAR,i));
                         afterBackslash = false;
@@ -130,7 +130,7 @@ public class Parse {
                         }
                     }
                     break;
-                case '|':
+                case "|":
                     if(afterBackslash) {
                         tokens.add(new Token(next,TokenType.CHAR,i));
                         afterBackslash = false;
@@ -138,7 +138,7 @@ public class Parse {
                         tokens.add(new Token(next,TokenType.SYMBOL,i));
                     }
                     break;
-                case '*':
+                case "*":
                     if(afterBackslash) {
                         tokens.add(new Token(next,TokenType.CHAR,i));
                         afterBackslash = false;
@@ -146,7 +146,7 @@ public class Parse {
                         tokens.add(new Token(next,TokenType.SYMBOL,i));
                     }
                     break;
-                case '?':
+                case "?":
                     if(afterBackslash) {
                         tokens.add(new Token(next,TokenType.CHAR,i));
                         afterBackslash = false;
@@ -154,23 +154,44 @@ public class Parse {
                         tokens.add(new Token(next,TokenType.SYMBOL,i));
                     }
                     break;
-                case 'n':
+                case "d":
                     if(afterBackslash) {
-                        tokens.add(new Token('\n',TokenType.CHAR,i));
+                        tokens.add(new Token("\\d",TokenType.SYMBOL,i));
                         afterBackslash = false;
                     } else
                         tokens.add(new Token(next,TokenType.CHAR,i));
                     break;
-                case 'r':
+                case "n":
                     if(afterBackslash) {
-                        tokens.add(new Token('\r',TokenType.CHAR,i));
+                        tokens.add(new Token("\n",TokenType.CHAR,i));
                         afterBackslash = false;
                     } else
                         tokens.add(new Token(next,TokenType.CHAR,i));
                     break;
-                case 't':
+                case "r":
                     if(afterBackslash) {
-                        tokens.add(new Token('\t',TokenType.CHAR,i));
+                        tokens.add(new Token("\r",TokenType.CHAR,i));
+                        afterBackslash = false;
+                    } else
+                        tokens.add(new Token(next,TokenType.CHAR,i));
+                    break;
+                case "s":
+                    if(afterBackslash) {
+                        tokens.add(new Token("\\s",TokenType.SYMBOL,i));
+                        afterBackslash = false;
+                    } else
+                        tokens.add(new Token(next,TokenType.CHAR,i));
+                    break;
+                case "t":
+                    if(afterBackslash) {
+                        tokens.add(new Token("\t",TokenType.CHAR,i));
+                        afterBackslash = false;
+                    } else
+                        tokens.add(new Token(next,TokenType.CHAR,i));
+                    break;
+                case "w":
+                    if(afterBackslash) {
+                        tokens.add(new Token("\\w",TokenType.SYMBOL,i));
                         afterBackslash = false;
                     } else
                         tokens.add(new Token(next,TokenType.CHAR,i));
@@ -197,7 +218,7 @@ public class Parse {
     // 解析 *, 进stack
     private boolean parseZeroOrMore() throws SyntaxError {
         if(parseZeroOrOne()) {
-            if(getSymbol('*')) {
+            if(getSymbol("*")) {
                 if(stack.peek() instanceof ZeroOrOneNode)
                     throw new SyntaxError("can't nest a ? inside of a *");
                 else {
@@ -210,10 +231,26 @@ public class Parse {
             return false;
     }
 
+    // 解析 +, 进stack
+    private boolean parseOneOrMore() throws SyntaxError {
+        if(parseZeroOrOne()) {
+            if(getSymbol("+")) {
+                if(stack.peek() instanceof ZeroOrOneNode)
+                    throw new SyntaxError("can't nest a ? inside of a +");
+                else {
+                    stack.push(new OneOrMoreNode(stack.pop()));
+                    return true;
+                }
+            } else
+                return true;
+        } else
+            return false;
+    }
+
     // 解析 ?, 进stack
     private boolean parseZeroOrOne() throws SyntaxError {
         if(parseSegment()) {
-            if(getSymbol('?'))
+            if(getSymbol("?"))
                 stack.push(new ZeroOrOneNode(stack.pop()));
             return true;
         } else
@@ -227,14 +264,14 @@ public class Parse {
 
     // 解析() 含 |
     private boolean parseOption() throws SyntaxError {
-        if(getSymbol('(')) {
+        if(getSymbol("(")) {
             ArrayList<ASTNode> options = new ArrayList<>();
-            if(getSymbol(')'))
+            if(getSymbol(")"))
                 throw new SyntaxError("empty options");
             while(parseConcat()) {
                 options.add(stack.pop());
-                if(!getSymbol('|')) {
-                    if(getSymbol(')')) {
+                if(!getSymbol("|")) {
+                    if(getSymbol(")")) {
                         stack.push(new OptionNode(options));
                         return true;
                     } else
@@ -248,7 +285,7 @@ public class Parse {
 
     // 解析字符，同时将字符推入stack，并且从tokens中删除
     private boolean parseChar() {
-        Character c = getChar();
+        String c = getChar();
         if(c != null) {
             stack.push(new CharNode(c));
             return true;
@@ -258,7 +295,7 @@ public class Parse {
     }
 
     // 得到tokens首字符，并且删除之
-    private Character getChar() {
+    private String getChar() {
         if(moreCode() && tokens.peek().getType() == TokenType.CHAR) {
             return tokens.poll().getValue();
         } else
@@ -266,9 +303,9 @@ public class Parse {
     }
 
     // 判断tokens首字符类型是否为SYMBOL，是则删除之
-    private boolean getSymbol(char val) {
+    private boolean getSymbol(String val) {
         if(moreCode() && tokens.peek().getType() == TokenType.SYMBOL
-                && tokens.peek().getValue() == val) {
+                && tokens.peek().getValue().equals(val)) {
             tokens.poll();
             return true;
         } else

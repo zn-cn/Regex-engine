@@ -1,6 +1,7 @@
 package regex_engine.parse.astnode;
 
 // .
+// 匹配除 "\n" 之外的任何单个字符
 public class AnyNode implements ASTNode{
     private ASTNode node;
 

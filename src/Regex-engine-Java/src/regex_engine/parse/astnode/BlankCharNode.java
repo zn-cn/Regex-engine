@@ -1,19 +1,19 @@
 package regex_engine.parse.astnode;
-
-// []
-public class OneCharRangeNode implements ASTNode{
+// "\\s"
+// 匹配任何空白字符,等价于 [ \f\n\r\t\v]
+public class BlankCharNode {
     private ASTNode node;
 
-    public OneCharRangeNode(ASTNode n){
+    public BlankCharNode(ASTNode n){
         node = n;
     }
 
     @Override
     public String toString(){
-        return "[" + node + "]";
+        return "\\s";
     }
 
-    public ASTNode getNode() {
+    public ASTNode getNode(){
         return node;
     }
 

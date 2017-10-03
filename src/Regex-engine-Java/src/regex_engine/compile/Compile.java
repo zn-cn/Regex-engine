@@ -29,22 +29,38 @@ public class Compile {
 		if(tree instanceof ConcatNode)
 			return compileConcat((ConcatNode)tree,startId);
 		else if(tree instanceof OptionNode)
-			return compileOpt((OptionNode)tree,startId);
+			return compileOption((OptionNode)tree,startId);
 		else if(tree instanceof CharNode)
 			return compileChar((CharNode)tree,startId);
 		else if(tree instanceof ZeroOrOneNode)
-			return compileZoOrOne((ZeroOrOneNode)tree,startId);
+			return compileZeroOrOne((ZeroOrOneNode)tree,startId);
 		else {
 			throw new UnsupportedOperationException("can't compile " + tree.getClass().getName() + "'s yet");
 		}
 	}
 
 	// 编译 ？
-	private int compileZoOrOne(ZeroOrOneNode tree, int startId) {
+	private int compileZeroOrOne(ZeroOrOneNode tree, int startId) {
 		int endId = compile(tree.getNode(),startId);
 		chart.addBlankConnection(startId,endId);
 		return endId;
 	}
+
+	// 编译 *
+	private int compileZeroOrMore(ZeroOrMoreNode tree, int startId) {
+		int endId = compile(tree.getNode(),startId);
+		chart.addBlankConnection(startId,endId);
+		return endId;
+	}
+
+	// 编译 .
+	private int compileAny(AnyNode tree, int startId) {
+		int endId = compile(tree.getNode(),startId);
+		chart.addBlankConnection(startId,endId);
+		return endId;
+	}
+
+
 
 	// 编译 字符
 	private int compileChar(CharNode tree, int startId) {
@@ -53,7 +69,7 @@ public class Compile {
 	}
 
 	// 编译（|）
-	private int compileOpt(OptionNode tree, int startId) {
+	private int compileOption(OptionNode tree, int startId) {
 		ArrayList<Integer> startIds = new ArrayList<>();
 		ArrayList<Integer> endIds = new ArrayList<>();
 		int endId = startId;

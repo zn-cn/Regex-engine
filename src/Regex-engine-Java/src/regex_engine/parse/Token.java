@@ -3,11 +3,11 @@ package regex_engine.parse;
 
 public class Token {
 
-	private char value;
+	private String value;
 	private TokenType type;
 	private int pos;
 
-	public Token(char v, TokenType t, int p) {
+	public Token(String v, TokenType t, int p) {
 		super();
 		value = v;
 		type = t;
@@ -18,7 +18,7 @@ public class Token {
 		return "<" + type + ":" + value + ">";
 	}
 
-	public char getValue() {
+	public String getValue() {
 		return value;
 	}
 

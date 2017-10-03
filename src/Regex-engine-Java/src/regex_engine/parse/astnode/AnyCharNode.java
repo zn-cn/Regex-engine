@@ -1,19 +1,20 @@
 package regex_engine.parse.astnode;
 
-// []
-public class OneCharRangeNode implements ASTNode{
+// "\\w"
+// 匹配包括下划线的任何单词字符。等价于'[A-Za-z0-9_]'
+public class AnyCharNode implements ASTNode {
     private ASTNode node;
 
-    public OneCharRangeNode(ASTNode n){
+    public AnyCharNode(ASTNode n){
         node = n;
     }
 
     @Override
     public String toString(){
-        return "[" + node + "]";
+        return "\\w";
     }
 
-    public ASTNode getNode() {
+    public ASTNode getNode(){
         return node;
     }
 
