@@ -10,22 +10,18 @@ public class Test {
     public static void main(String[] args) {
         Regex r = null;
         try {
-            r = new Regex("I (don't )?like ((Hormel |Spamco )?spam|bacon|eggs)( for (breakfast|lunch|dinner))?");
+            r = new Regex("You are(n't)? (ZN|WSS|CXY|LQM)");
         } catch (SyntaxError e) {
             e.printStackTrace();
         }
-        r.test("I like Hormel spam");
-        r.test("I don't like Spamco spam");
-        r.test("I like bacon for dinner");
-        r.test("I like eggs");
-        r.test("I don't like eggs for lunch");
+        r.test("You are ZN");
+        r.test("You aren't WSS");
 
-        String pattern = "I (don't )?like ((Hormel |Spamco )?spam|bacon|eggs)( for (breakfast|lunch|dinner))?";
-        System.out.println(Pattern.matches(pattern, "I like Hormel spam"));
-        System.out.println(Pattern.matches(pattern, "I don't like Spamco spam"));
-        System.out.println(Pattern.matches(pattern, "I like bacon for dinner"));
-        System.out.println(Pattern.matches(pattern, "I like eggs"));
-        System.out.println(Pattern.matches(pattern, "I don't like eggs for lunch"));
+
+        String pattern = "You are(n't)? (ZN|WSS|CXY|LQM)";
+        System.out.println(Pattern.matches(pattern, "You are ZN"));
+        System.out.println(Pattern.matches(pattern, "You aren't WSS"));
+
     }
 
 }

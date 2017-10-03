@@ -27,16 +27,31 @@ public class Compile {
 	// 编译
 	private int compile(ASTNode tree, int startId) {
 		if(tree instanceof ConcatNode)
-			return compileConcat((ConcatNode)tree,startId);
+			return compileConcat((ConcatNode)tree, startId);
 		else if(tree instanceof OptionNode)
-			return compileOption((OptionNode)tree,startId);
+			return compileOption((OptionNode)tree, startId);
 		else if(tree instanceof CharNode)
-			return compileChar((CharNode)tree,startId);
+			return compileChar((CharNode)tree, startId);
 		else if(tree instanceof ZeroOrOneNode)
-			return compileZeroOrOne((ZeroOrOneNode)tree,startId);
+			return compileZeroOrOne((ZeroOrOneNode)tree, startId);
+		else if (tree instanceof StartPosNode)
+			return compileStartPos((StartPosNode)tree, startId);
+		else if (tree instanceof OverPosNode)
+			return compileOverPos((OverPosNode)tree, startId);
 		else {
 			throw new UnsupportedOperationException("can't compile " + tree.getClass().getName() + "'s yet");
 		}
+	}
+
+	// 编译 ^
+	private int compileStartPos(StartPosNode tree, int startId) {
+		chart.addBlankConnection(startId, startId + 1);
+		return startId + 1;
+	}
+	// 编译 $
+	private int compileOverPos(OverPosNode tree, int startId) {
+		chart.addBlankConnection(startId, startId + 1);
+		return startId + 1;
 	}
 
 	// 编译 ？
@@ -46,6 +61,7 @@ public class Compile {
 		return endId;
 	}
 
+	// TODO
 	// 编译 *
 	private int compileZeroOrMore(ZeroOrMoreNode tree, int startId) {
 		int endId = compile(tree.getNode(),startId);
@@ -66,6 +82,19 @@ public class Compile {
 	private int compileChar(CharNode tree, int startId) {
 		chart.addConnection(startId,startId + 1,tree.getChar());
 		return startId + 1;
+	}
+
+	// 编译 []
+	private int compileOneCharRange(OneCharRangeNode tree, int startId){
+		ArrayList<Integer> startIds = new ArrayList<>();
+		ArrayList<Integer> endIds = new ArrayList<>();
+		int endId = startId;
+		for (ASTNode option: tree.getOptions()){
+			int nextStartId = endId + 1;
+
+		}
+		int overallEnd = endIds.get(endIds.size()-1) + 1;
+		return overallEnd;
 	}
 
 	// 编译（|）

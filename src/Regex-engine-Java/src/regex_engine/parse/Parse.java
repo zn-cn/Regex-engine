@@ -100,12 +100,20 @@ public class Parse {
                         tokens.add(new Token(next,TokenType.CHAR,i));
                         afterBackslash = false;
                     } else {
-                        if(symmetry.peek() == ']') {
+                        if(symmetry.peek() == '[') {
                             symmetry.pop();
                             tokens.add(new Token(next,TokenType.SYMBOL,i));
                         } else {
                             throw new SyntaxError("You donn't use ] to close.");
                         }
+                    }
+                    break;
+                case "-":
+                    if (symmetry.peek() == '['){
+                        tokens.pop();
+                        tokens.add(new Token(next, TokenType.SYMBOL, i));
+                    } else {
+                        tokens.add(new Token(next, TokenType.CHAR, i));
                     }
                     break;
                 case "{":
@@ -122,7 +130,7 @@ public class Parse {
                         tokens.add(new Token(next,TokenType.CHAR,i));
                         afterBackslash = false;
                     } else {
-                        if(symmetry.peek() == '}') {
+                        if(symmetry.peek() == '{') {
                             symmetry.pop();
                             tokens.add(new Token(next,TokenType.SYMBOL,i));
                         } else {

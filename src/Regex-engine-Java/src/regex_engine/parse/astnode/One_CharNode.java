@@ -2,17 +2,17 @@ package regex_engine.parse.astnode;
 
 import java.util.ArrayList;
 
-// []
-public class OneCharRangeNode implements ASTNode{
+// []中的 a-z等
+public class One_CharNode {
     private ArrayList<ASTNode> options;
 
-    public OneCharRangeNode(ArrayList<ASTNode> opts) {
+    public One_CharNode(ArrayList<ASTNode> opts) {
         options = opts;
     }
 
     @Override
     public String toString() {
-        return "[]" + options;
+        return "One_Char" + options;
     }
 
     public ArrayList<ASTNode> getOptions() {
