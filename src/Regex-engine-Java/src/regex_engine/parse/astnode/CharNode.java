@@ -4,6 +4,7 @@ package regex_engine.parse.astnode;
 public class CharNode implements ASTNode {
 
 	private char c;
+	private ASTNode node;
 
 	public CharNode(char theChar) {
 		c = theChar;
@@ -18,4 +19,7 @@ public class CharNode implements ASTNode {
 		return c;
 	}
 
+	public void setChar(char ch){
+		c = ch;
+	}
 }

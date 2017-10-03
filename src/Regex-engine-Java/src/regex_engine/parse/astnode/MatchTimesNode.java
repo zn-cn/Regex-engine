@@ -1,10 +1,10 @@
 package regex_engine.parse.astnode;
 
-// $
-public class OverPosNode {
+// {}
+public class MatchTimesNode {
     private ASTNode node;
 
-    public OverPosNode(ASTNode n){
+    public MatchTimesNode(ASTNode n){
         node = n;
     }
 
@@ -15,5 +15,9 @@ public class OverPosNode {
 
     public ASTNode getNode() {
         return node;
+    }
+
+    public void setNode(ASTNode n){
+        node = n;
     }
 }

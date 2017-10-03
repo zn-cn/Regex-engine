@@ -16,4 +16,8 @@ public class OneCharRangeNode {
     public ASTNode getNode() {
         return node;
     }
+
+    public void setNode(ASTNode n) {
+        node = n;
+    }
 }

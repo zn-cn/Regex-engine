@@ -1,18 +1,23 @@
 package regex_engine.parse.astnode;
 
-public class OneOrMoreNode {
+// .
+public class AnyNode implements ASTNode{
     private ASTNode node;
 
-    public OneOrMoreNode(ASTNode n){
+    public AnyNode(ASTNode n){
         node = n;
     }
 
     @Override
     public String toString(){
-        return "(" + node + ")+";
+        return ".";
     }
 
     public ASTNode getNode(){
         return node;
+    }
+
+    public void setNode(ASTNode n) {
+        node = n;
     }
 }

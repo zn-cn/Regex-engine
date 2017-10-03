@@ -1,7 +1,7 @@
 package regex_engine.parse.astnode;
 
 import java.util.ArrayList;
-// (pattern)  含(|)
+// (|)
 public class OptionNode implements ASTNode {
 
 	private ArrayList<ASTNode> options;
@@ -17,6 +17,10 @@ public class OptionNode implements ASTNode {
 
 	public ArrayList<ASTNode> getOptions() {
 		return options;
+	}
+
+	public void setOptions(ArrayList<ASTNode> op){
+		options = op;
 	}
 
 }

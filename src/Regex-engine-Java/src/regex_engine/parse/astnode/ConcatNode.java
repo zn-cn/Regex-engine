@@ -19,4 +19,8 @@ public class ConcatNode implements ASTNode {
 		return segments;
 	}
 
+	public void setSegments(ArrayList<ASTNode> s){
+	    segments = s;
+    }
+
 }

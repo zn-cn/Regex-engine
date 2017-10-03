@@ -18,4 +18,7 @@ public class ZeroOrMoreNode implements ASTNode {
 		return node;
 	}
 
+	public void setNode(ASTNode n){
+		node = n;
+	}
 }
