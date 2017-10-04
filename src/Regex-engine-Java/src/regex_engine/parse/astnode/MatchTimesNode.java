@@ -1,23 +1,33 @@
 package regex_engine.parse.astnode;
 
-// {}
+// {lower_bound, upper_bound}
 public class MatchTimesNode implements ASTNode{
-    private ASTNode node;
+    private int upper_bound;
+    private int lower_bound;
 
-    public MatchTimesNode(ASTNode n){
-        node = n;
+    public MatchTimesNode(String lower_bound, String upper_bound) {
+        this.lower_bound = Integer.parseInt(lower_bound);
+        this.upper_bound = Integer.parseInt(upper_bound);
     }
 
-    @Override
+    public MatchTimesNode(String upper_bound){
+        this.upper_bound = this.lower_bound = Integer.parseInt(upper_bound);
+    }
+
+    public MatchTimesNode(String lower_bound, int up){
+        this.lower_bound = Integer.parseInt(lower_bound);
+        this.upper_bound = up;
+    }
     public String toString() {
-        return super.toString();
+        return String.valueOf("{" + String.valueOf(upper_bound) + ", " + String.valueOf(lower_bound) + "}");
     }
 
-    public ASTNode getNode() {
-        return node;
+    public int getLowwer_bound() {
+        return this.lower_bound;
     }
 
-    public void setNode(ASTNode n){
-        node = n;
+    public int getUpper_bound(){
+        return this.upper_bound;
     }
+
 }

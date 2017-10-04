@@ -4,17 +4,11 @@ package regex_engine.parse.astnode;
 public class CharNode implements ASTNode {
 
 	private char c;
-	private ASTNode node;
 
 	public CharNode(char theChar) {
 		c = theChar;
 	}
 
-	public CharNode(String st){
-		c = st.charAt(0);
-	}
-
-	@Override
 	public String toString() {
 		return String.valueOf(c);
 	}

@@ -6,8 +6,8 @@ import java.util.ArrayList;
 public class OneCharRangeNode implements ASTNode{
     private ArrayList<ASTNode> options;
 
-    public OneCharRangeNode(ArrayList<ASTNode> opts) {
-        options = opts;
+    public OneCharRangeNode(ArrayList<ASTNode> options) {
+        this.options = options;
     }
 
     @Override
@@ -16,10 +16,10 @@ public class OneCharRangeNode implements ASTNode{
     }
 
     public ArrayList<ASTNode> getOptions() {
-        return options;
+        return this.options;
     }
 
-    public void setOptions(ArrayList<ASTNode> op){
-        options = op;
+    public void setOptions(ArrayList<ASTNode> options){
+        this.options = options;
     }
 }

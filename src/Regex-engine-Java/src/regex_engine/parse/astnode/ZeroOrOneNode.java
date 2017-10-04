@@ -5,8 +5,8 @@ public class ZeroOrOneNode implements ASTNode {
 
 	private ASTNode node;
 
-	public ZeroOrOneNode(ASTNode n) {
-		node = n;
+	public ZeroOrOneNode(ASTNode node) {
+		this.node = node;
 	}
 
 	@Override
@@ -18,7 +18,7 @@ public class ZeroOrOneNode implements ASTNode {
 		return node;
 	}
 
-    public void setNode(ASTNode n){
-	    node = n;
-    }
+	public void setNode(ASTNode node) {
+		this.node = node;
+	}
 }

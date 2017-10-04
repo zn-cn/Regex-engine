@@ -5,8 +5,8 @@ package regex_engine.parse.astnode;
 public class AnyNode implements ASTNode{
     private ASTNode node;
 
-    public AnyNode(ASTNode n){
-        node = n;
+    public AnyNode(ASTNode node){
+        this.node = node;
     }
 
     @Override
@@ -15,10 +15,10 @@ public class AnyNode implements ASTNode{
     }
 
     public ASTNode getNode(){
-        return node;
+        return this.node;
     }
 
-    public void setNode(ASTNode n) {
-        node = n;
+    public void setNode(ASTNode node) {
+        this.node = node;
     }
 }
