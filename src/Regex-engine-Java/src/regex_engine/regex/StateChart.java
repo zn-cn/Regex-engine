@@ -7,10 +7,9 @@ import java.util.Set;
 // 状态表
 public class StateChart {
 
-	private HashMap<Integer,HashMap<Character,HashSet<Integer>>> connections;
+	private HashMap<Integer,HashMap<String,HashSet<Integer>>> connections;
 	private HashSet<Integer> finalStates;
-	//	private static final HashSet<Integer> hashSetOfNull = new HashSet<>();
-	private static final Set<Character> hashSetOfNull = new HashSet<>();
+	private static final Set<String> hashSetOfNull = new HashSet<>();
 
 	static {
 		hashSetOfNull.add(null);
@@ -20,14 +19,15 @@ public class StateChart {
 		connections = new HashMap<>();
 		finalStates = new HashSet<>();
 	}
+
 	@Override
 	public String toString() {
 		return "regex_engine.regex.StateChart" + connections;
 	}
 
 	// 增加链接（下一个状态 from -> to )
-	public void addConnection(int from, int to, Character input) {
-		HashMap<Character,HashSet<Integer>> connectionsFromState;
+	public void addConnection(int from, int to, String input) {
+		HashMap<String,HashSet<Integer>> connectionsFromState;
 		if(!connections.containsKey(from)) {
 			connectionsFromState = new HashMap<>();
 			connections.put(from,connectionsFromState);
@@ -35,8 +35,9 @@ public class StateChart {
 			connectionsFromState = connections.get(from);
 		}
 		if(!connectionsFromState.containsKey(input)) {
-			connectionsFromState.put(input,new HashSet<>(2));
-		}
+			connectionsFromState.put(input, new HashSet<>());
+		} else
+			connectionsFromState.get(input).add(to);  //若已存在则继续增加链接
 		connectionsFromState.get(input).add(to);
 	}
 
@@ -56,7 +57,7 @@ public class StateChart {
 	}
 
 	// 获取输入字符链接(to)
-	public HashSet<Integer> getConnectionsForInput(int state, Character input) {
+	public HashSet<Integer> getConnectionsForInput(int state, String input) {
 		if(connections.containsKey(state) && connections.get(state).containsKey(input)) {
 				return connections.get(state).get(input);
 		} else
@@ -65,9 +66,9 @@ public class StateChart {
 
 	// 判断是否是空白链接（正则运算符）
 	public boolean notOnlyBlankConnections(int state) {
-		HashMap<Character,HashSet<Integer>> connectionsFrom = connections.get(state);
+		HashMap<String,HashSet<Integer>> connectionsFrom = connections.get(state);
 		if(connectionsFrom != null) {
-			Set<Character> keys = connectionsFrom.keySet();
+			Set<String> keys = connectionsFrom.keySet();
 			return !keys.equals(hashSetOfNull);
 		} else
 			return true;
@@ -78,4 +79,7 @@ public class StateChart {
 		return finalStates.contains(state);
 	}
 
+	public HashMap<Integer,HashMap<String,HashSet<Integer>>> getConnections(){
+		return connections;
+	}
 }

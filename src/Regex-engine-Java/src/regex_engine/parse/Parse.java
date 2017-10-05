@@ -21,15 +21,17 @@ public class Parse {
     }
 
     // 外部引用
-    public static ASTNode parse(String input) throws SyntaxError {
+    public static ArrayList<ASTNode> parse(String input) throws SyntaxError {
         return new Parse(input).parse();
     }
 
     // 解析
-    private ASTNode parse() throws SyntaxError {
+    private ArrayList<ASTNode> parse() throws SyntaxError {
         tokens = tokenInit(input);
-        if (parseConcat() && stack.size() == 1 && tokens.isEmpty()) {
-            return stack.pop();
+        if (parseConcat() && tokens.isEmpty()) {
+            ArrayList<ASTNode> temp = new ArrayList<>(stack);
+            stack.clear();
+            return temp;
         } else
             throw new SyntaxError("Invalid syntax");
     }
@@ -138,6 +140,22 @@ public class Parse {
                         tokens.add(new Token(next, TokenType.SYMBOL, i));
                     }
                     break;
+                case "+":
+                    if (afterBackslash) {
+                        tokens.add(new Token(next, TokenType.CHAR, i));
+                        afterBackslash = false;
+                    } else {
+                        tokens.add(new Token(next, TokenType.SYMBOL, i));
+                    }
+                    break;
+                case ".":
+                    if (afterBackslash) {
+                        tokens.add(new Token(next, TokenType.CHAR, i));
+                        afterBackslash = false;
+                    } else {
+                        tokens.add(new Token(next, TokenType.SYMBOL, i));
+                    }
+                    break;
                 case "?":
                     if (afterBackslash) {
                         tokens.add(new Token(next, TokenType.CHAR, i));
@@ -146,28 +164,6 @@ public class Parse {
                         tokens.add(new Token(next, TokenType.SYMBOL, i));
                     }
                     break;
-//                case "n":
-//                    if (afterBackslash) {
-//                        tokens.add(new Token("\n", TokenType.CHAR, i));
-//                        afterBackslash = false;
-//                    } else
-//                        tokens.add(new Token(next, TokenType.CHAR, i));
-//                    break;
-//                case "r":
-//                    if (afterBackslash) {
-//                        tokens.add(new Token("\r", TokenType.CHAR, i));
-//                        afterBackslash = false;
-//                    } else
-//                        tokens.add(new Token(next, TokenType.CHAR, i));
-//                    break;
-
-//                case "t":
-//                    if (afterBackslash) {
-//                        tokens.add(new Token("\t", TokenType.CHAR, i));
-//                        afterBackslash = false;
-//                    } else
-//                        tokens.add(new Token(next, TokenType.CHAR, i));
-//                    break;
                 case "^":
                     // 暂时不开发 [^a-z]类,此处^仅表示匹配开头位置
                     if (afterBackslash) {
@@ -221,14 +217,6 @@ public class Parse {
         while (parseZeroOrMore() || parseOneOrMore() || parseZeroOrOne() || parseSegment()) {
             boolean a = false;
         }
-// TODO 以后要把下面这一段去掉
-        ArrayList<ASTNode> segments = new ArrayList<>();
-        while (!stack.empty())
-        {
-            segments.add(stack.pop());
-        }
-        stack.push(new ConcatNode(segments));
-
         return true;
     }
 
@@ -296,7 +284,7 @@ public class Parse {
             while (parseOne_Char(options)) {
                 boolean a = false;
             }
-            stack.push(new OptionNode(options));
+            stack.push(new OneCharRangeNode(options));
             return true;
 
         } else if (getSymbol("{")) {
@@ -379,12 +367,12 @@ public class Parse {
         if (comma) {
             String[] temp = times.split(",");
             if (temp.length == 2)
-                stack.push(new MatchTimesNode(temp[0], temp[1]));
+                stack.push(new MatchTimesNode(temp[0], temp[1], stack.pop()));
             else if (temp.length == 1)
-                stack.push(new MatchTimesNode(temp[0], Integer.MAX_VALUE));
+                stack.push(new MatchTimesNode(temp[0], Integer.MAX_VALUE, stack.pop()));
             else throw new SyntaxError("Invalid syntax");
         } else {
-            stack.push(new MatchTimesNode(times));
+            stack.push(new MatchTimesNode(times, stack.pop()));
         }
 
     }
@@ -412,10 +400,10 @@ public class Parse {
             stack.push(new ESCNode(4));
         } else if (getSymbol("\\d")) {
             stack.push(new ESCNode(5));
-        } else if (isSepecialChar()) {
-            return true;
+        } else if (getSymbol(".")) {
+            stack.push(new ESCNode(6));
         } else
-            return false;
+            return isSepecialChar();
         return true;
     }
 

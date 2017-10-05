@@ -2,6 +2,7 @@ package regex_engine.parse.astnode;
 
 import java.util.ArrayList;
 
+// ()或者一个区块
 public class ConcatNode implements ASTNode {
 
 	private ArrayList<ASTNode> segments;

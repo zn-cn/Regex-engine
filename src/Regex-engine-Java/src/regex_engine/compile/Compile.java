@@ -2,143 +2,179 @@ package regex_engine.compile;
 
 import java.util.ArrayList;
 
+import com.sun.org.apache.bcel.internal.generic.BREAKPOINT;
+import regex_engine.parse.SyntaxError;
 import regex_engine.regex.StateChart;
 import regex_engine.parse.astnode.*;
 
 public class Compile {
 
-	public static StateChart compile(ASTNode parsedPattern) {
+	public static StateChart compile(ArrayList<ASTNode> parsedPattern) throws SyntaxError{
 		return new Compile(parsedPattern).compile();
 	}
 
-	private ASTNode astnode;
+	private ArrayList<ASTNode> astnode;
 	private StateChart chart;
 
-	// ^ $ \\w  \\s \\d   分别对应
     private static final int STARTCHAR = 1;
     private static final int OVERCHAR = 2;
     private static final int ANYCHAR = 3;
     private static final int BLANKCHAR = 4;
     private static final int NUMBERCHAR = 5;
+    private static final int ANYNODE = 6;
 
-
-	private Compile(ASTNode parsedPattern) {
+	private Compile(ArrayList<ASTNode> parsedPattern) {
 		astnode = parsedPattern;
 		chart = new StateChart();
 	}
 
-	private StateChart compile() {
-		chart.addFinalState(compile(astnode,0));
+	private StateChart compile() throws SyntaxError{
+        int finalstate = 0;
+        for (ASTNode node: astnode){
+            finalstate = compile(node, finalstate);
+        }
+        chart.addFinalState(finalstate);
 		return chart;
 	}
 
 	// 编译
-	// TODO
-	private int compile(ASTNode tree, int startId) {
-		if(tree instanceof ConcatNode)            // ConcatNode
+	private int compile(ASTNode tree, int startId) throws SyntaxError{
+		if(tree instanceof ConcatNode)            // ConcatNode ()
 			return compileConcat((ConcatNode)tree, startId);
-		else if(tree instanceof OptionNode)      // OptionNode
+		else if(tree instanceof ZeroOrOneNode)      // ZeroOrOneNode  ?
+			return compileZeroOrOne((ZeroOrOneNode)tree, startId);
+		else if(tree instanceof ZeroOrMoreNode)      // ZeroOrMoreNode  *
+			return compileZeroOrMore((ZeroOrMoreNode)tree, startId);
+		else if(tree instanceof OneOrMoreNode)      // OneOrMoreNode  +
+			return compileOneOrMore((OneOrMoreNode)tree, startId);
+		else if(tree instanceof OptionNode)      // OptionNode  |
 			return compileOption((OptionNode)tree, startId);
 		else if(tree instanceof OneCharRangeNode)  // OneCharRangeNode  []
 			return compileOneCharRange((OneCharRangeNode)tree, startId);
+		else if (tree instanceof One_CharNode)       // One_CharNode []里面的 如: a-z 1-8
+		    return compileOne_Char((One_CharNode)tree, startId);
+		else if (tree instanceof MatchTimesNode)    // MatchTimesNode {}
+			return compileMatchTimes((MatchTimesNode) tree, startId);
 		else if(tree instanceof CharNode)         // CharNode  字符
 			return compileChar((CharNode)tree, startId);
-		else if(tree instanceof ZeroOrOneNode)      // ZeroOrOneNode
-			return compileZeroOrOne((ZeroOrOneNode)tree, startId);
-		else if(tree instanceof ZeroOrMoreNode)      // ZeroOrMoreNode
-			return compileZeroOrMore((ZeroOrMoreNode)tree, startId);
-		else if(tree instanceof OneOrMoreNode)      // OneOrMoreNode
-			return compileOneOrMore((OneOrMoreNode)tree, startId);
+		else if (tree instanceof ESCNode)         // ESCNode ^ $ \\w \\s \\d .
+			return compileESCNode((ESCNode) tree, startId);
 		else {
 			throw new UnsupportedOperationException("can't compile " + tree.getClass().getName() + "'s yet");
 		}
 	}
 
-    private int compileConcat(ConcatNode tree, int startId) {
+    private int compileConcat(ConcatNode tree, int startId) throws SyntaxError{
         int endId = startId;
-        for(ASTNode segment: tree.getSegments())
-            endId = compile(segment,endId);
+        ArrayList<Integer> endIds = new ArrayList<>();
+        for(ASTNode segment: tree.getSegments()){
+            endId = compile(segment, endId);
+            endIds.add(endId);
+        }
+        // ()中的| 若已经满足直接跳到最后,此为第二个链接
+        if (endIds.size() > 1)
+            for (int i = 0; i < endIds.size() - 1; i++){
+            chart.addBlankConnection(endIds.get(i), endId);
+            }
         return endId;
     }
 
-
 	// 编译 ？
-	private int compileZeroOrOne(ZeroOrOneNode tree, int startId) {
+	private int compileZeroOrOne(ZeroOrOneNode tree, int startId) throws SyntaxError{
 		int endId = compile(tree.getNode(),startId);
-		chart.addBlankConnection(startId,endId);
-		return endId;
+//		chart.addBlankConnection(startId,endId);
+        chart.getConnections().get(startId).remove(null);
+        chart.addConnection(startId, endId, "??");
+        return endId;
 	}
 
-	// TODO
 	// 编译 *
-	private int compileZeroOrMore(ZeroOrMoreNode tree, int startId) {
+	private int compileZeroOrMore(ZeroOrMoreNode tree, int startId) throws SyntaxError{
 		int endId = compile(tree.getNode(),startId);
-		chart.addBlankConnection(startId,endId);
+//		chart.addBlankConnection(startId,endId);
+		chart.getConnections().get(startId).remove(null);
+		chart.addConnection(startId, endId, "**");
 		return endId;
 	}
 
-	// TODO
-	// 编译 *
-	private int compileOneOrMore(OneOrMoreNode tree, int startId) {
+	// 编译 +
+	private int compileOneOrMore(OneOrMoreNode tree, int startId) throws SyntaxError{
 		int endId = compile(tree.getNode(),startId);
-		chart.addBlankConnection(startId,endId);
+//		chart.addBlankConnection(startId,endId);
+		chart.getConnections().get(startId).remove(null);
+		chart.addConnection(startId, endId, "++");
+        return endId;
+	}
+
+	// 编译 []
+	private int compileOneCharRange(OneCharRangeNode tree, int startId) throws SyntaxError{
+	    int endId = startId;
+        ArrayList<Integer> endIds = new ArrayList<>();
+        for (ASTNode node: tree.getOptions()){
+            endIds.add(endId);
+            endId = compile(node, endId);
+        }
+        for (int i: endIds){
+            chart.addBlankConnection(i, endId);
+        }
 		return endId;
 	}
 
-	// TODO
-	// 编译 .
-	private int compileAny(AnyNode tree, int startId) {
-		int endId = compile(tree.getNode(),startId);
-		chart.addBlankConnection(startId,endId);
+	// 编译[]里面的  如： a-z 1-8, 判断范围将所含input split("-")即可获得范围
+    private int compileOne_Char(One_CharNode tree, int startId) throws SyntaxError{
+        chart.addConnection(startId, startId + 1, tree.getLower_bound() + "-" + tree.getUpper_bound());
+	    return startId + 1;
+    }
+
+	// 编译 可选项
+	private int compileOption(OptionNode tree, int startId) throws SyntaxError{
+		int endId = startId;
+        ArrayList<Integer> endIds = new ArrayList<>();
+        for(ASTNode option: tree.getOptions()) {
+            endIds.add(endId);
+            endId = compile(option,endId);
+		}
+		for (int i: endIds)
+			chart.addBlankConnection(i, endId);
 		return endId;
+	}
+
+	// 编译{} 前面有个无宽度跳转，判断多少次，将所含input split(",")即可获得两个数字
+	private int compileMatchTimes(MatchTimesNode tree, int startId) throws SyntaxError{
+        chart.addConnection(startId, startId, tree.getLowwer_bound() + "," + tree.getUpper_bound());
+        return compile(tree.getNode(), startId);
+	}
+
+	// 编译 ^ $ \\w \\s \\d
+	private int compileESCNode(ESCNode tree, int startId) throws SyntaxError{
+		switch (tree.getFunction()){
+			case STARTCHAR:
+				chart.addConnection(startId, startId + 1, "^^");
+				break;
+			case OVERCHAR:
+				chart.addConnection(startId, startId + 1, "$$");
+				break;
+			case ANYCHAR:
+				chart.addConnection(startId, startId + 1, "\\w");
+				break;
+			case BLANKCHAR:
+				chart.addConnection(startId, startId + 1, "\\s");
+				break;
+			case NUMBERCHAR:
+				chart.addConnection(startId, startId + 1, "\\d");
+				break;
+			case ANYNODE:
+				chart.addConnection(startId, startId + 1, "..");
+				break;
+			default:
+				throw new SyntaxError("don't support it.");
+		}
+		return startId + 1;
 	}
 
 	// 编译 字符
 	private int compileChar(CharNode tree, int startId) {
-		chart.addConnection(startId,startId + 1,tree.getChar());
+		chart.addConnection(startId,startId + 1,String.valueOf(tree.getChar()));
 		return startId + 1;
 	}
-
-	// TODO
-	// 编译 []
-	private int compileOneCharRange(OneCharRangeNode tree, int startId){
-//		ArrayList<Integer> startIds = new ArrayList<>();
-//		ArrayList<Integer> endIds = new ArrayList<>();
-//		int endId = startId;
-//		for(ASTNode option: tree.getOptions()) {
-//			int nextStartId = endId + 1;
-//			startIds.add(nextStartId);
-//			endId = compile(option,nextStartId);
-//			endIds.add(endId);
-//		}
-//		int overallEnd = endIds.get(endIds.size()-1) + 1;
-//		for(int i=0; i < startIds.size(); i++) {
-//			chart.addBlankConnection(startId,startIds.get(i));
-//			chart.addBlankConnection(endIds.get(i),overallEnd);
-//		}
-//		return overallEnd;
-		return 0;
-	}
-
-	// 编译（|）
-	private int compileOption(OptionNode tree, int startId) {
-		ArrayList<Integer> startIds = new ArrayList<>();
-		ArrayList<Integer> endIds = new ArrayList<>();
-		int endId = startId;
-		for(ASTNode option: tree.getOptions()) {
-			int nextStartId = endId + 1;
-			startIds.add(nextStartId);
-			endId = compile(option,nextStartId);
-			endIds.add(endId);
-		}
-		int overallEnd = endIds.get(endIds.size()-1) + 1;
-		for(int i=0; i < startIds.size(); i++) {
-			chart.addBlankConnection(startId,startIds.get(i));
-			chart.addBlankConnection(endIds.get(i),overallEnd);
-		}
-		return overallEnd;
-	}
-
-
-
 }

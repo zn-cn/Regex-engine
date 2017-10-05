@@ -16,7 +16,7 @@ public class StateMatch {
 	public void accept(char input) {
 		HashSet<Integer> newStates = new HashSet<>();
 		for(int state: currentStates)
-			newStates.addAll(stateChart.getConnectionsForInput(state, input));
+			newStates.addAll(stateChart.getConnectionsForInput(state, String.valueOf(input)));
 
 		currentStates.clear();
 		for(int state: newStates)
@@ -43,4 +43,14 @@ public class StateMatch {
 		addCurrentState(0);
 	}
 
+	public StateChart getStateChart(){
+		return this.stateChart;
+	}
+	public HashSet<Integer> getCurrentStates(){
+		return this.currentStates;
+	}
+
+	public void setCurrentStates(HashSet<Integer> currentStates){
+		this.currentStates = currentStates;
+	}
 }

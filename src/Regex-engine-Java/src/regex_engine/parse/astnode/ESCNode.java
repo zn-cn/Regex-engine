@@ -20,6 +20,8 @@ public class ESCNode implements ASTNode{
             return "ESC: \\s";
         else if (function == 5)
             return "ESC: \\d";
+        else if (function == 6)
+            return "ESC: .";
         else
             return super.toString();
     }

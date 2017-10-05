@@ -13,12 +13,12 @@ public class One_CharNode implements ASTNode{
         return String.valueOf(String.valueOf(lower_bound) + "-" + String.valueOf(upper_bound));
     }
 
-    public char getLower_bound() {
-        return this.lower_bound;
+    public String getLower_bound() {
+        return String.valueOf(this.lower_bound);
     }
 
-    public char getUpper_bound(){
-        return this.upper_bound;
+    public String getUpper_bound(){
+        return String.valueOf(this.upper_bound);
     }
 
     public void setUpper_bound(char upper_bound){

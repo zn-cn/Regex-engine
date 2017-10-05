@@ -20,13 +20,12 @@
       <file leaf-file-name="Parse.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/regex_engine/parse/Parse.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="223" column="19" lean-forward="false" selection-start-line="223" selection-start-column="19" selection-end-line="223" selection-end-column="19" />
+            <state relative-caret-position="681">
+              <caret line="418" column="32" lean-forward="false" selection-start-line="418" selection-start-column="32" selection-end-line="418" selection-end-column="32" />
               <folding>
                 <element signature="method#Parse#0;class#Parse#0" expanded="false" />
-                <element signature="method#parse#0;class#Parse#0" expanded="false" />
-                <element signature="method#parse#1;class#Parse#0" expanded="false" />
                 <element signature="method#tokenInit#0;class#Parse#0" expanded="false" />
+                <element signature="method#parseConcat#0;class#Parse#0" expanded="false" />
                 <element signature="method#parseZeroOrMore#0;class#Parse#0" expanded="false" />
                 <element signature="method#parseOneOrMore#0;class#Parse#0" expanded="false" />
                 <element signature="method#parseZeroOrOne#0;class#Parse#0" expanded="false" />
@@ -35,92 +34,31 @@
                 <element signature="method#parseOne_Char#0;class#Parse#0" expanded="false" />
                 <element signature="method#parseMatchTimes#0;class#Parse#0" expanded="false" />
                 <element signature="method#parseChar#0;class#Parse#0" expanded="false" />
+                <element signature="method#parseESC#0;class#Parse#0" expanded="false" />
                 <element signature="method#getChar#0;class#Parse#0" expanded="false" />
                 <element signature="method#isSepecialChar#0;class#Parse#0" expanded="false" />
                 <element signature="method#getSymbol#0;class#Parse#0" expanded="false" />
-                <marker date="1507122154098" expanded="false" signature="15975:15986" ph=" { " />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ZeroOrOneNode.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/regex_engine/parse/astnode/ZeroOrOneNode.java">
+      <file leaf-file-name="OneOrMoreNode.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/regex_engine/parse/astnode/OneOrMoreNode.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="24" lean-forward="false" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
-              <folding>
-                <element signature="e#151#152#0" expanded="true" />
-                <element signature="e#174#175#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ASTNode.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/regex_engine/parse/astnode/ASTNode.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+            <state relative-caret-position="85">
+              <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Compile.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/regex_engine/compile/Compile.java">
+      <file leaf-file-name="Regex.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/regex_engine/regex/Regex.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1001">
-              <caret line="128" column="40" lean-forward="true" selection-start-line="128" selection-start-column="40" selection-end-line="128" selection-end-column="40" />
+            <state relative-caret-position="221">
+              <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Test.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/regex_engine/test/Test.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="32" lean-forward="true" selection-start-line="14" selection-start-column="32" selection-end-line="14" selection-end-column="32" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ESCNode.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/regex_engine/parse/astnode/ESCNode.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="23" column="36" lean-forward="false" selection-start-line="23" selection-start-column="36" selection-end-line="23" selection-end-column="36" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ConcatNode.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/regex_engine/parse/astnode/ConcatNode.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="36" lean-forward="false" selection-start-line="17" selection-start-column="36" selection-end-line="17" selection-end-column="36" />
-              <folding>
-                <element signature="e#199#200#0" expanded="true" />
-                <element signature="e#230#231#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="OptionNode.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/regex_engine/parse/astnode/OptionNode.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="30" lean-forward="false" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="30" />
-              <folding>
-                <element signature="e#203#204#0" expanded="true" />
-                <element signature="e#232#233#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -128,8 +66,75 @@
       <file leaf-file-name="StateMatch.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/regex_engine/regex/StateMatch.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="18" column="49" lean-forward="false" selection-start-line="18" selection-start-column="49" selection-end-line="18" selection-end-column="49" />
+            <state relative-caret-position="867">
+              <caret line="51" column="0" lean-forward="true" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
+              <folding>
+                <element signature="e#1111#1112#0" expanded="true" />
+                <element signature="e#1140#1141#0" expanded="true" />
+                <element signature="e#1185#1186#0" expanded="true" />
+                <element signature="e#1217#1218#0" expanded="true" />
+                <element signature="e#1281#1282#0" expanded="true" />
+                <element signature="e#1322#1323#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Compile.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/regex_engine/compile/Compile.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="52">
+              <caret line="12" column="44" lean-forward="true" selection-start-line="12" selection-start-column="44" selection-end-line="12" selection-end-column="44" />
+              <folding>
+                <element signature="method#compile#2;class#Compile#0" expanded="false" />
+                <element signature="method#compileConcat#0;class#Compile#0" expanded="false" />
+                <element signature="method#compileOneCharRange#0;class#Compile#0" expanded="false" />
+                <element signature="method#compileOne_Char#0;class#Compile#0" expanded="false" />
+                <element signature="method#compileOption#0;class#Compile#0" expanded="false" />
+                <element signature="method#compileESCNode#0;class#Compile#0" expanded="false" />
+                <element signature="method#compileChar#0;class#Compile#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="One_CharNode.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/regex_engine/parse/astnode/One_CharNode.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="20" column="47" lean-forward="false" selection-start-line="20" selection-start-column="47" selection-end-line="20" selection-end-column="47" />
+              <folding>
+                <element signature="e#334#335#0" expanded="true" />
+                <element signature="e#436#437#0" expanded="true" />
+                <element signature="e#474#475#0" expanded="true" />
+                <element signature="e#529#530#0" expanded="true" />
+                <element signature="e#566#567#0" expanded="true" />
+                <element signature="e#621#622#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MatchTimesNode.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/regex_engine/parse/astnode/MatchTimesNode.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="510">
+              <caret line="33" column="47" lean-forward="false" selection-start-line="33" selection-start-column="47" selection-end-line="33" selection-end-column="47" />
+              <folding>
+                <element signature="e#993#994#0" expanded="true" />
+                <element signature="e#1048#1049#0" expanded="true" />
+                <element signature="e#1085#1086#0" expanded="true" />
+                <element signature="e#1140#1141#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Test.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/regex_engine/test/Test.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="15" column="9" lean-forward="true" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -138,13 +143,24 @@
       <file leaf-file-name="StateChart.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/regex_engine/regex/StateChart.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="24" column="53" lean-forward="false" selection-start-line="24" selection-start-column="53" selection-end-line="24" selection-end-column="53" />
+            <state relative-caret-position="323">
+              <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
               <folding>
-                <element signature="e#568#569#0" expanded="true" />
-                <element signature="e#627#628#0" expanded="true" />
-                <element signature="method#addConnection#0;class#StateChart#0" expanded="false" />
-                <element signature="method#notOnlyBlankConnections#0;class#StateChart#0" expanded="false" />
+                <element signature="e#2185#2186#0" expanded="true" />
+                <element signature="e#2210#2211#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OneCharRangeNode.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/regex_engine/parse/astnode/OneCharRangeNode.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="22" column="30" lean-forward="false" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
+              <folding>
+                <element signature="e#478#479#0" expanded="true" />
+                <element signature="e#516#517#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -214,32 +230,32 @@
         <option value="$PROJECT_DIR$/src/regex_engine/parser/ast/MatchTimesNode.java" />
         <option value="$PROJECT_DIR$/src/regex_engine/Regex.java" />
         <option value="$PROJECT_DIR$/src/regex_engine/regex/StateMachine.java" />
-        <option value="$PROJECT_DIR$/src/regex_engine/regex/Regex.java" />
         <option value="$PROJECT_DIR$/src/regex_engine/parse/Parser.java" />
         <option value="$PROJECT_DIR$/src/regex_engine/parse/astnode/ASTNode.java" />
-        <option value="$PROJECT_DIR$/src/regex_engine/regex/StateChart.java" />
-        <option value="$PROJECT_DIR$/src/regex_engine/regex/StateMatch.java" />
         <option value="$PROJECT_DIR$/src/regex_engine/parse/Token.java" />
         <option value="$PROJECT_DIR$/src/regex_engine/parse/astnode/CharNode.java" />
         <option value="$PROJECT_DIR$/src/regex_engine/parse/astnode/NumberNode.java" />
-        <option value="$PROJECT_DIR$/src/regex_engine/parse/astnode/MatchTimesNode.java" />
-        <option value="$PROJECT_DIR$/src/regex_engine/parse/astnode/AnyNode.java" />
         <option value="$PROJECT_DIR$/src/regex_engine/parse/astnode/ZeroOrOneNode.java" />
         <option value="$PROJECT_DIR$/src/regex_engine/parse/astnode/ZeroOrMoreNode.java" />
         <option value="$PROJECT_DIR$/src/regex_engine/parse/astnode/OneOrMoreNode.java" />
         <option value="$PROJECT_DIR$/src/regex_engine/parse/astnode/OneCharRangeNode.java" />
-        <option value="$PROJECT_DIR$/src/regex_engine/parse/astnode/ConcatNode.java" />
         <option value="$PROJECT_DIR$/src/regex_engine/parse/astnode/OptionNode.java" />
-        <option value="$PROJECT_DIR$/src/regex_engine/parse/astnode/One_CharNode.java" />
         <option value="$PROJECT_DIR$/src/regex_engine/parse/astnode/StartPosNode.java" />
         <option value="$PROJECT_DIR$/src/regex_engine/parse/astnode/AnyCharNode.java" />
         <option value="$PROJECT_DIR$/src/regex_engine/parse/astnode/BlankCharNode.java" />
         <option value="$PROJECT_DIR$/src/regex_engine/parse/astnode/OverPosNode.java" />
         <option value="$PROJECT_DIR$/src/regex_engine/parse/TokenType.java" />
-        <option value="$PROJECT_DIR$/src/regex_engine/compile/Compile.java" />
+        <option value="$PROJECT_DIR$/src/regex_engine/parse/astnode/AnyNode.java" />
+        <option value="$PROJECT_DIR$/src/regex_engine/parse/astnode/ConcatNode.java" />
         <option value="$PROJECT_DIR$/src/regex_engine/parse/astnode/ESCNode.java" />
         <option value="$PROJECT_DIR$/src/regex_engine/parse/Parse.java" />
+        <option value="$PROJECT_DIR$/src/regex_engine/parse/astnode/MatchTimesNode.java" />
+        <option value="$PROJECT_DIR$/src/regex_engine/parse/astnode/One_CharNode.java" />
         <option value="$PROJECT_DIR$/src/regex_engine/test/Test.java" />
+        <option value="$PROJECT_DIR$/src/regex_engine/compile/Compile.java" />
+        <option value="$PROJECT_DIR$/src/regex_engine/regex/StateChart.java" />
+        <option value="$PROJECT_DIR$/src/regex_engine/regex/StateMatch.java" />
+        <option value="$PROJECT_DIR$/src/regex_engine/regex/Regex.java" />
       </list>
     </option>
   </component>
@@ -249,11 +265,11 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="354" />
-    <option name="y" value="92" />
-    <option name="width" value="1285" />
-    <option name="height" value="676" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="61" />
+    <option name="y" value="24" />
+    <option name="width" value="653" />
+    <option name="height" value="744" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -270,9 +286,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -303,21 +316,31 @@
               <item name="Regex-engine-Java" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="regex_engine" type="462c0819:PsiDirectoryNode" />
+              <item name="regex" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Regex-engine-Java" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Regex-engine-Java" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="regex_engine" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="AndroidView" />
+      <pane id="Scratches" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="preferences.general" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="create.test.in.the.same.root" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../LearnRegex" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -454,11 +477,14 @@
       <workItem from="1507036113728" duration="5697000" />
       <workItem from="1507081103844" duration="21710000" />
       <workItem from="1507117754012" duration="1822000" />
+      <workItem from="1507165345558" duration="8042000" />
+      <workItem from="1507186011166" duration="10486000" />
+      <workItem from="1507201754980" duration="1294000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="86333000" />
+    <option name="totallyTimeSpent" value="108909000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -470,58 +496,37 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="61" y="-4" width="1305" height="772" extended-state="7" />
+    <frame x="61" y="-4" width="1305" height="772" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32905295" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32905295" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32744783" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23113964" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32905295" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21456848" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32744783" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36757624" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36757624" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32905295" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32858273" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1845907" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32905295" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21456848" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2209026" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19903691" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32858273" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32744783" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -532,9 +537,13 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="72" />
+      <option name="time" value="104" />
     </breakpoint-manager>
-    <watches-manager />
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="((java.util.ArrayList)((ConcatNode)astnode).segments).get(2)" custom="java.util.ArrayList,regex_engine.parse.astnode.ConcatNode" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/regex_engine/parse/astnode/ZeroOrMoreNode.java">
@@ -542,8 +551,8 @@
         <state relative-caret-position="272">
           <caret line="22" column="5" lean-forward="false" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
           <folding>
-            <element signature="e#333#334#0" expanded="false" />
-            <element signature="e#356#357#0" expanded="false" />
+            <element signature="e#154#155#0" expanded="false" />
+            <element signature="e#177#178#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -554,9 +563,8 @@
           <caret line="197" column="26" lean-forward="false" selection-start-line="197" selection-start-column="26" selection-end-line="197" selection-end-column="26" />
           <folding>
             <element signature="method#Parse#0;class#Parse#0" expanded="false" />
-            <element signature="method#parse#0;class#Parse#0" expanded="false" />
-            <element signature="method#parse#1;class#Parse#0" expanded="false" />
             <element signature="method#tokenInit#0;class#Parse#0" expanded="false" />
+            <element signature="method#parseConcat#0;class#Parse#0" expanded="false" />
             <element signature="method#parseZeroOrMore#0;class#Parse#0" expanded="false" />
             <element signature="method#parseOneOrMore#0;class#Parse#0" expanded="false" />
             <element signature="method#parseZeroOrOne#0;class#Parse#0" expanded="false" />
@@ -565,10 +573,10 @@
             <element signature="method#parseOne_Char#0;class#Parse#0" expanded="false" />
             <element signature="method#parseMatchTimes#0;class#Parse#0" expanded="false" />
             <element signature="method#parseChar#0;class#Parse#0" expanded="false" />
+            <element signature="method#parseESC#0;class#Parse#0" expanded="false" />
             <element signature="method#getChar#0;class#Parse#0" expanded="false" />
             <element signature="method#isSepecialChar#0;class#Parse#0" expanded="false" />
             <element signature="method#getSymbol#0;class#Parse#0" expanded="false" />
-            <marker date="1507122154098" expanded="false" signature="15975:15986" ph=" { " />
           </folding>
         </state>
       </provider>
@@ -577,10 +585,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="39" lean-forward="false" selection-start-line="6" selection-start-column="31" selection-end-line="6" selection-end-column="39" />
-          <folding>
-            <element signature="e#199#200#0" expanded="true" />
-            <element signature="e#230#231#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -590,9 +594,8 @@
           <caret line="24" column="29" lean-forward="false" selection-start-line="24" selection-start-column="29" selection-end-line="24" selection-end-column="29" />
           <folding>
             <element signature="method#Parse#0;class#Parse#0" expanded="false" />
-            <element signature="method#parse#0;class#Parse#0" expanded="false" />
-            <element signature="method#parse#1;class#Parse#0" expanded="false" />
             <element signature="method#tokenInit#0;class#Parse#0" expanded="false" />
+            <element signature="method#parseConcat#0;class#Parse#0" expanded="false" />
             <element signature="method#parseZeroOrMore#0;class#Parse#0" expanded="false" />
             <element signature="method#parseOneOrMore#0;class#Parse#0" expanded="false" />
             <element signature="method#parseZeroOrOne#0;class#Parse#0" expanded="false" />
@@ -601,10 +604,10 @@
             <element signature="method#parseOne_Char#0;class#Parse#0" expanded="false" />
             <element signature="method#parseMatchTimes#0;class#Parse#0" expanded="false" />
             <element signature="method#parseChar#0;class#Parse#0" expanded="false" />
+            <element signature="method#parseESC#0;class#Parse#0" expanded="false" />
             <element signature="method#getChar#0;class#Parse#0" expanded="false" />
             <element signature="method#isSepecialChar#0;class#Parse#0" expanded="false" />
             <element signature="method#getSymbol#0;class#Parse#0" expanded="false" />
-            <marker date="1507122154098" expanded="false" signature="15975:15986" ph=" { " />
           </folding>
         </state>
       </provider>
@@ -613,7 +616,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="17" column="32" lean-forward="true" selection-start-line="17" selection-start-column="32" selection-end-line="17" selection-end-column="32" />
-          <folding />
+          <folding>
+            <element signature="method#compile#2;class#Compile#0" expanded="false" />
+            <element signature="method#compileConcat#0;class#Compile#0" expanded="false" />
+            <element signature="method#compileOneCharRange#0;class#Compile#0" expanded="false" />
+            <element signature="method#compileOne_Char#0;class#Compile#0" expanded="false" />
+            <element signature="method#compileOption#0;class#Compile#0" expanded="false" />
+            <element signature="method#compileESCNode#0;class#Compile#0" expanded="false" />
+            <element signature="method#compileChar#0;class#Compile#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -629,7 +640,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" column="18" lean-forward="false" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
-          <folding />
+          <folding>
+            <element signature="e#242#243#0" expanded="false" />
+            <element signature="e#286#287#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -646,10 +660,8 @@
         <state relative-caret-position="476">
           <caret line="46" column="0" lean-forward="true" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
           <folding>
-            <element signature="e#568#569#0" expanded="true" />
-            <element signature="e#627#628#0" expanded="true" />
-            <element signature="method#addConnection#0;class#StateChart#0" expanded="false" />
-            <element signature="method#notOnlyBlankConnections#0;class#StateChart#0" expanded="false" />
+            <element signature="e#2185#2186#0" expanded="true" />
+            <element signature="e#2210#2211#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -658,10 +670,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding>
-            <element signature="e#203#204#0" expanded="true" />
-            <element signature="e#232#233#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -669,10 +677,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="19" column="17" lean-forward="true" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="17" />
-          <folding>
-            <element signature="e#375#376#0" expanded="false" />
-            <element signature="e#407#408#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -680,9 +685,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="22" column="26" lean-forward="true" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -690,10 +693,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#199#200#0" expanded="true" />
-            <element signature="e#230#231#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -701,7 +700,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="17" column="28" lean-forward="true" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
-          <folding />
+          <folding>
+            <element signature="method#compile#2;class#Compile#0" expanded="false" />
+            <element signature="method#compileConcat#0;class#Compile#0" expanded="false" />
+            <element signature="method#compileOneCharRange#0;class#Compile#0" expanded="false" />
+            <element signature="method#compileOne_Char#0;class#Compile#0" expanded="false" />
+            <element signature="method#compileOption#0;class#Compile#0" expanded="false" />
+            <element signature="method#compileESCNode#0;class#Compile#0" expanded="false" />
+            <element signature="method#compileChar#0;class#Compile#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -711,9 +718,8 @@
           <caret line="154" column="11" lean-forward="false" selection-start-line="154" selection-start-column="11" selection-end-line="154" selection-end-column="11" />
           <folding>
             <element signature="method#Parse#0;class#Parse#0" expanded="false" />
-            <element signature="method#parse#0;class#Parse#0" expanded="false" />
-            <element signature="method#parse#1;class#Parse#0" expanded="false" />
             <element signature="method#tokenInit#0;class#Parse#0" expanded="false" />
+            <element signature="method#parseConcat#0;class#Parse#0" expanded="false" />
             <element signature="method#parseZeroOrMore#0;class#Parse#0" expanded="false" />
             <element signature="method#parseOneOrMore#0;class#Parse#0" expanded="false" />
             <element signature="method#parseZeroOrOne#0;class#Parse#0" expanded="false" />
@@ -722,10 +728,10 @@
             <element signature="method#parseOne_Char#0;class#Parse#0" expanded="false" />
             <element signature="method#parseMatchTimes#0;class#Parse#0" expanded="false" />
             <element signature="method#parseChar#0;class#Parse#0" expanded="false" />
+            <element signature="method#parseESC#0;class#Parse#0" expanded="false" />
             <element signature="method#getChar#0;class#Parse#0" expanded="false" />
             <element signature="method#isSepecialChar#0;class#Parse#0" expanded="false" />
             <element signature="method#getSymbol#0;class#Parse#0" expanded="false" />
-            <marker date="1507122154098" expanded="false" signature="15975:15986" ph=" { " />
           </folding>
         </state>
       </provider>
@@ -735,8 +741,8 @@
         <state relative-caret-position="34">
           <caret line="2" column="4" lean-forward="false" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="4" />
           <folding>
-            <element signature="e#151#152#0" expanded="true" />
-            <element signature="e#174#175#0" expanded="true" />
+            <element signature="e#151#152#0" expanded="false" />
+            <element signature="e#174#175#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -745,7 +751,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" column="13" lean-forward="false" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
-          <folding />
+          <folding>
+            <element signature="e#242#243#0" expanded="false" />
+            <element signature="e#286#287#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -761,10 +770,8 @@
         <state relative-caret-position="119">
           <caret line="9" column="71" lean-forward="false" selection-start-line="9" selection-start-column="71" selection-end-line="9" selection-end-column="71" />
           <folding>
-            <element signature="e#568#569#0" expanded="true" />
-            <element signature="e#627#628#0" expanded="true" />
-            <element signature="method#addConnection#0;class#StateChart#0" expanded="false" />
-            <element signature="method#notOnlyBlankConnections#0;class#StateChart#0" expanded="false" />
+            <element signature="e#2185#2186#0" expanded="true" />
+            <element signature="e#2210#2211#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -773,10 +780,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding>
-            <element signature="e#203#204#0" expanded="true" />
-            <element signature="e#232#233#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -784,9 +787,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="72" lean-forward="true" selection-start-line="9" selection-start-column="72" selection-end-line="9" selection-end-column="72" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -806,49 +807,63 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/regex_engine/parse/astnode/NumberNode.java" />
+    <entry file="file://$PROJECT_DIR$/src/regex_engine/parse/astnode/AnyCharNode.java" />
+    <entry file="file://$PROJECT_DIR$/src/regex_engine/parse/astnode/BlankCharNode.java" />
+    <entry file="file://$PROJECT_DIR$/src/regex_engine/parse/astnode/StartPosNode.java" />
+    <entry file="file://$PROJECT_DIR$/src/regex_engine/parse/astnode/ASTNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/regex_engine/compiler/Compiler.java" />
+    <entry file="file://$PROJECT_DIR$/src/regex_engine/StateMachine.java" />
+    <entry file="file://$PROJECT_DIR$/src/regex_engine/Test.java" />
     <entry file="file://$PROJECT_DIR$/src/regex_engine/parse/astnode/ZeroOrMoreNode.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="8" column="24" lean-forward="false" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
           <folding>
-            <element signature="e#333#334#0" expanded="false" />
-            <element signature="e#356#357#0" expanded="false" />
+            <element signature="e#154#155#0" expanded="false" />
+            <element signature="e#177#178#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/regex_engine/parse/astnode/OneOrMoreNode.java">
+    <entry file="file://$PROJECT_DIR$/src/regex_engine/parse/Token.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="19" column="25" lean-forward="true" selection-start-line="19" selection-start-column="25" selection-end-line="19" selection-end-column="25" />
+        <state relative-caret-position="153">
+          <caret line="9" column="7" lean-forward="false" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
           <folding>
-            <element signature="e#375#376#0" expanded="false" />
-            <element signature="e#407#408#0" expanded="false" />
+            <element signature="e#242#243#0" expanded="false" />
+            <element signature="e#286#287#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/regex_engine/regex/Regex.java">
+    <entry file="file://$PROJECT_DIR$/src/regex_engine/parse/astnode/AnyNode.java" />
+    <entry file="file://$PROJECT_DIR$/src/regex_engine/parse/astnode/ESCNode.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="74">
-          <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="102">
+          <caret line="7" column="17" lean-forward="false" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/regex_engine/parse/astnode/AnyCharNode.java" />
-    <entry file="file://$PROJECT_DIR$/src/regex_engine/parse/astnode/AnyNode.java">
+    <entry file="file://$PROJECT_DIR$/src/regex_engine/parse/astnode/OptionNode.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="22" column="5" lean-forward="true" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
-          <folding>
-            <element signature="e#371#372#0" expanded="false" />
-            <element signature="e#403#404#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="153">
+          <caret line="9" column="30" lean-forward="false" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="30" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/regex_engine/parse/astnode/BlankCharNode.java" />
+    <entry file="file://$PROJECT_DIR$/src/regex_engine/parse/astnode/ConcatNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="11" lean-forward="false" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/regex_engine/parse/astnode/CharNode.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -856,33 +871,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/regex_engine/parse/astnode/MatchTimesNode.java">
+    <entry file="file://$PROJECT_DIR$/src/regex_engine/parse/astnode/ZeroOrOneNode.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="18" column="29" lean-forward="false" selection-start-line="18" selection-start-column="29" selection-end-line="18" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/regex_engine/parse/astnode/One_CharNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="39" lean-forward="true" selection-start-line="12" selection-start-column="39" selection-end-line="12" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/regex_engine/parse/astnode/OneCharRangeNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="22" column="30" lean-forward="false" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
+        <state relative-caret-position="85">
+          <caret line="5" column="24" lean-forward="false" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
           <folding>
-            <element signature="e#478#479#0" expanded="false" />
-            <element signature="e#516#517#0" expanded="false" />
+            <element signature="e#151#152#0" expanded="false" />
+            <element signature="e#174#175#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/regex_engine/parse/astnode/StartPosNode.java" />
-    <entry file="file://$PROJECT_DIR$/src/regex_engine/parse/astnode/OverPosNode.java" />
     <entry file="file://$PROJECT_DIR$/src/regex_engine/parse/TokenType.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -891,117 +890,61 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/regex_engine/parse/Token.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="17" column="36" lean-forward="false" selection-start-line="17" selection-start-column="36" selection-end-line="17" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/regex_engine/parse/astnode/ASTNode.java">
+    <entry file="file://$PROJECT_DIR$/src/regex_engine/parse/astnode/OverPosNode.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
-          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <caret line="3" column="13" lean-forward="false" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/regex_engine/parse/astnode/ConcatNode.java">
+    <entry file="file://$PROJECT_DIR$/src/regex_engine/parse/astnode/OneCharRangeNode.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
-          <caret line="17" column="36" lean-forward="false" selection-start-line="17" selection-start-column="36" selection-end-line="17" selection-end-column="36" />
+          <caret line="22" column="30" lean-forward="false" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
           <folding>
-            <element signature="e#199#200#0" expanded="true" />
-            <element signature="e#230#231#0" expanded="true" />
+            <element signature="e#478#479#0" expanded="true" />
+            <element signature="e#516#517#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/regex_engine/parse/astnode/OptionNode.java">
+    <entry file="file://$PROJECT_DIR$/src/regex_engine/parse/astnode/One_CharNode.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="30" lean-forward="false" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="30" />
+        <state relative-caret-position="255">
+          <caret line="20" column="47" lean-forward="false" selection-start-line="20" selection-start-column="47" selection-end-line="20" selection-end-column="47" />
           <folding>
-            <element signature="e#203#204#0" expanded="true" />
-            <element signature="e#232#233#0" expanded="true" />
+            <element signature="e#334#335#0" expanded="true" />
+            <element signature="e#436#437#0" expanded="true" />
+            <element signature="e#474#475#0" expanded="true" />
+            <element signature="e#529#530#0" expanded="true" />
+            <element signature="e#566#567#0" expanded="true" />
+            <element signature="e#621#622#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/regex_engine/parse/astnode/ZeroOrOneNode.java">
+    <entry file="file://$PROJECT_DIR$/src/regex_engine/parse/astnode/MatchTimesNode.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="24" lean-forward="false" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
+        <state relative-caret-position="510">
+          <caret line="33" column="47" lean-forward="false" selection-start-line="33" selection-start-column="47" selection-end-line="33" selection-end-column="47" />
           <folding>
-            <element signature="e#151#152#0" expanded="true" />
-            <element signature="e#174#175#0" expanded="true" />
+            <element signature="e#993#994#0" expanded="true" />
+            <element signature="e#1048#1049#0" expanded="true" />
+            <element signature="e#1085#1086#0" expanded="true" />
+            <element signature="e#1140#1141#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/regex_engine/compiler/Compiler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/regex_engine/StateMachine.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/regex_engine/Test.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/regex_engine/regex/StateMatch.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="49" lean-forward="false" selection-start-line="18" selection-start-column="49" selection-end-line="18" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/regex_engine/regex/StateChart.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="24" column="53" lean-forward="false" selection-start-line="24" selection-start-column="53" selection-end-line="24" selection-end-column="53" />
-          <folding>
-            <element signature="e#568#569#0" expanded="true" />
-            <element signature="e#627#628#0" expanded="true" />
-            <element signature="method#addConnection#0;class#StateChart#0" expanded="false" />
-            <element signature="method#notOnlyBlankConnections#0;class#StateChart#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/regex_engine/parse/astnode/ESCNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="23" column="36" lean-forward="false" selection-start-line="23" selection-start-column="36" selection-end-line="23" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/regex_engine/parse/Parse.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="223" column="19" lean-forward="false" selection-start-line="223" selection-start-column="19" selection-end-line="223" selection-end-column="19" />
+        <state relative-caret-position="681">
+          <caret line="418" column="32" lean-forward="false" selection-start-line="418" selection-start-column="32" selection-end-line="418" selection-end-column="32" />
           <folding>
             <element signature="method#Parse#0;class#Parse#0" expanded="false" />
-            <element signature="method#parse#0;class#Parse#0" expanded="false" />
-            <element signature="method#parse#1;class#Parse#0" expanded="false" />
             <element signature="method#tokenInit#0;class#Parse#0" expanded="false" />
+            <element signature="method#parseConcat#0;class#Parse#0" expanded="false" />
             <element signature="method#parseZeroOrMore#0;class#Parse#0" expanded="false" />
             <element signature="method#parseOneOrMore#0;class#Parse#0" expanded="false" />
             <element signature="method#parseZeroOrOne#0;class#Parse#0" expanded="false" />
@@ -1010,29 +953,77 @@
             <element signature="method#parseOne_Char#0;class#Parse#0" expanded="false" />
             <element signature="method#parseMatchTimes#0;class#Parse#0" expanded="false" />
             <element signature="method#parseChar#0;class#Parse#0" expanded="false" />
+            <element signature="method#parseESC#0;class#Parse#0" expanded="false" />
             <element signature="method#getChar#0;class#Parse#0" expanded="false" />
             <element signature="method#isSepecialChar#0;class#Parse#0" expanded="false" />
             <element signature="method#getSymbol#0;class#Parse#0" expanded="false" />
-            <marker date="1507122154098" expanded="false" signature="15975:15986" ph=" { " />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/regex_engine/parse/astnode/OneOrMoreNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/regex_engine/compile/Compile.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1001">
-          <caret line="128" column="40" lean-forward="true" selection-start-line="128" selection-start-column="40" selection-end-line="128" selection-end-column="40" />
-          <folding />
+        <state relative-caret-position="52">
+          <caret line="12" column="44" lean-forward="true" selection-start-line="12" selection-start-column="44" selection-end-line="12" selection-end-column="44" />
+          <folding>
+            <element signature="method#compile#2;class#Compile#0" expanded="false" />
+            <element signature="method#compileConcat#0;class#Compile#0" expanded="false" />
+            <element signature="method#compileOneCharRange#0;class#Compile#0" expanded="false" />
+            <element signature="method#compileOne_Char#0;class#Compile#0" expanded="false" />
+            <element signature="method#compileOption#0;class#Compile#0" expanded="false" />
+            <element signature="method#compileESCNode#0;class#Compile#0" expanded="false" />
+            <element signature="method#compileChar#0;class#Compile#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/regex_engine/regex/StateChart.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding>
+            <element signature="e#2185#2186#0" expanded="true" />
+            <element signature="e#2210#2211#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/regex_engine/regex/StateMatch.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="867">
+          <caret line="51" column="0" lean-forward="true" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
+          <folding>
+            <element signature="e#1111#1112#0" expanded="true" />
+            <element signature="e#1140#1141#0" expanded="true" />
+            <element signature="e#1185#1186#0" expanded="true" />
+            <element signature="e#1217#1218#0" expanded="true" />
+            <element signature="e#1281#1282#0" expanded="true" />
+            <element signature="e#1322#1323#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/regex_engine/test/Test.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="32" lean-forward="true" selection-start-line="14" selection-start-column="32" selection-end-line="14" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="204">
+          <caret line="15" column="9" lean-forward="true" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/regex_engine/regex/Regex.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
