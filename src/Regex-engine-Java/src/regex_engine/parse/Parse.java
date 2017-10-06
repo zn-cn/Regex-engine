@@ -9,7 +9,6 @@ import regex_engine.parse.astnode.*;
 
 public class Parse {
 
-
     private String input;
     private Queue<Token> tokens;
     private Stack<ASTNode> stack;
@@ -211,7 +210,6 @@ public class Parse {
         }
         return tokens;
     }
-
 
     private boolean parseConcat() throws SyntaxError {
         while (parseZeroOrMore() || parseOneOrMore() || parseZeroOrOne() || parseSegment()) {
@@ -430,7 +428,6 @@ public class Parse {
         } else
             return false;
     }
-
 
     // 判断tokens是否为空，否则返回 true
     private boolean moreCode() {

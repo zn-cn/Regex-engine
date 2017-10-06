@@ -1,33 +1,24 @@
 package regex_engine.regex;
 
+import regex_engine.compile.Compile;
 import regex_engine.parse.Parse;
 import regex_engine.parse.SyntaxError;
-import regex_engine.compile.Compile;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 
-public class Regex {
-
+public class Capture {
     private String regex;
     private StateMatch match;
 
-    public Regex(){
-
-    }
-    public Regex(String r) throws SyntaxError {
+    public Capture(String r) throws SyntaxError{
         regex = r;
-        match = new StateMatch(Compile.compile(Parse.parse(regex)));
+        match = new StateMatch(Compile.compile(Parse.parse(r)));
     }
-
-    @Override
-    public String toString() {
-        return "/" + regex + "/";
-    }
-
-    // 正则匹配
-    private boolean matches(String input) throws SyntaxError {
+    public ArrayList<String> matchAndCapture(String input) throws SyntaxError {
         boolean isfinalstate = true;
+        ArrayList<String> captures = new ArrayList<>();
         for (int i = 0; i < input.length(); i++) {
             int judge = judgeFunction();
             if (judge == 0) {
@@ -48,12 +39,15 @@ public class Regex {
                     isfinalstate = false;
                 break;
             } else if (judge == 4) {
-                int concat_state = match.acceptConcat(input.substring(i));
-                if (concat_state == 0) {
+                HashMap<Boolean, Integer> capture = match.captureString(input.substring(i));
+
+                if (capture.containsKey(true)) {
+                    captures.add(input.substring(i, i + capture.get(true)));
+                    i = i + capture.get(true) - 1;
+
+                } else{
                     isfinalstate = false;
                     break;
-                }else{
-                    i = i + concat_state - 1;
                 }
             }else if (judge == 5) {
                 if (!match.acceptOneCharRange(input.substring(i)))
@@ -61,23 +55,20 @@ public class Regex {
                 break;
             } else
                 throw new SyntaxError("The engine has some problems.");
-
         }
 
         if (isfinalstate && match.isOnFinalState())
             isfinalstate = true;
 //        boolean result = match.isOnFinalState();
         match.reset();
-        return isfinalstate;
-    }
-
-    // 测试匹配
-    public void test(String input) throws SyntaxError {
-        System.out.println(input + ": " + this.matches(input));
+        if (isfinalstate){
+            return captures;
+        } else {
+            throw new SyntaxError("The regex doesn't match your string.");
+        }
     }
 
     private int judgeFunction() {
-
         int min = (Integer)match.getCurrentStates().toArray()[0];
 
         HashMap<String, HashSet<Integer>> state = match.getStateChart().getConnections().get(min);
