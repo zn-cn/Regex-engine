@@ -73,10 +73,10 @@ public class Regex {
         System.out.println(input + ": " + this.matches(input));
     }
 
-    private int judgeFunction(int f) throws SyntaxError{
+    private int judgeFunction(int f) throws SyntaxError {
         int min = (Integer) match.getCurrentStates().toArray()[0];
         HashMap<String, HashSet<Integer>> state = match.getStateChart().getConnections().get(min);
-        if (f == 0){
+        if (f == 0) {
             if (state.containsKey("**"))
                 return 1;
             else if (state.containsKey("??"))
@@ -89,7 +89,7 @@ public class Regex {
                 return 5;
             else
                 return 0;
-        } else if (f == 1){
+        } else if (f == 1) {
             if (state.containsKey("??"))
                 return 2;
             else if (state.containsKey("++"))
@@ -100,7 +100,7 @@ public class Regex {
                 return 5;
             else
                 return 0;
-        } else if (f == 2){
+        } else if (f == 2) {
             if (state.containsKey("**"))
                 return 1;
             else if (state.containsKey("++"))
@@ -111,7 +111,7 @@ public class Regex {
                 return 5;
             else
                 return 0;
-        } else if (f == 3){
+        } else if (f == 3) {
             if (state.containsKey("**"))
                 return 1;
             else if (state.containsKey("??"))
@@ -122,7 +122,7 @@ public class Regex {
                 return 5;
             else
                 return 0;
-        } else if (f == 5){
+        } else if (f == 5) {
             if (state.containsKey("**"))
                 return 1;
             else if (state.containsKey("??"))
@@ -138,6 +138,7 @@ public class Regex {
 
     }
 
+    // TODO
     // 匹配 ？
     public boolean acceptZeroOrOne(String input) throws SyntaxError {
 //        HashSet<Integer> currentStates2 = new HashSet<>(currentStates);
@@ -153,7 +154,7 @@ public class Regex {
 
             if (judge == 0) {
                 if (!match.accept(input.charAt(i))) {
-                    if (times == 0){
+                    if (times == 0) {
                         match.getCurrentStates().clear();
                         match.getCurrentStates().add(bound);
                         i = -1;
@@ -164,7 +165,7 @@ public class Regex {
                 }
             } else if (judge == 1) {
                 if (!acceptZeroOrMore(input.substring(i))) {
-                    if (times == 0){
+                    if (times == 0) {
                         match.getCurrentStates().clear();
                         match.getCurrentStates().add(bound);
                         i = -1;
@@ -174,7 +175,7 @@ public class Regex {
                 }
             } else if (judge == 2) {
                 if (!acceptZeroOrOne(input.substring(i))) {
-                    if (times == 0){
+                    if (times == 0) {
                         match.getCurrentStates().clear();
                         match.getCurrentStates().add(bound);
                         i = -1;
@@ -184,7 +185,7 @@ public class Regex {
                 }
             } else if (judge == 3) {
                 if (!acceptOneOrMore(input.substring(i))) {
-                    if (times == 0){
+                    if (times == 0) {
                         match.getCurrentStates().clear();
                         match.getCurrentStates().add(bound);
                         i = -1;
@@ -195,7 +196,7 @@ public class Regex {
             } else if (judge == 4) {
                 int concat_state = match.acceptConcat(input.substring(i));
                 if (concat_state == 0) {
-                    if (times == 0){
+                    if (times == 0) {
                         match.getCurrentStates().clear();
                         match.getCurrentStates().add(bound);
                         i = -1;
@@ -207,7 +208,7 @@ public class Regex {
                 }
             } else if (judge == 5) {
                 if (!acceptOneCharRange(input.substring(i))) {
-                    if (times == 0){
+                    if (times == 0) {
                         match.getCurrentStates().clear();
                         match.getCurrentStates().add(bound);
                         i = -1;
@@ -223,19 +224,18 @@ public class Regex {
     }
 
     // 匹配{}  暂时只支持 字符
-    public boolean acceptOneCharRange(String input) throws SyntaxError{
-        int lower_bound = (Integer)match.getStateChart().getConnections().get(match.getCurrentStates().toArray()[0]).get(null).toArray()[0];
-        int upper_bound = (Integer)match.getStateChart().getConnections().get(match.getCurrentStates().toArray()[0]).get(null).toArray()[0];
-        if (match.getStateChart().getConnections().get(match.getCurrentStates().toArray()[0]).get(null).toArray().length > 1){
-            int temp = (Integer)match.getStateChart().getConnections().get(match.getCurrentStates().toArray()[0]).get(null).toArray()[1];
+    public boolean acceptOneCharRange(String input) throws SyntaxError {
+        int lower_bound = (Integer) match.getStateChart().getConnections().get(match.getCurrentStates().toArray()[0]).get(null).toArray()[0];
+        int upper_bound = (Integer) match.getStateChart().getConnections().get(match.getCurrentStates().toArray()[0]).get(null).toArray()[0];
+        if (match.getStateChart().getConnections().get(match.getCurrentStates().toArray()[0]).get(null).toArray().length > 1) {
+            int temp = (Integer) match.getStateChart().getConnections().get(match.getCurrentStates().toArray()[0]).get(null).toArray()[1];
             if (temp > lower_bound)
                 upper_bound = temp;
             else
                 lower_bound = temp;
         }
-        int currentstate = (Integer)match.getCurrentStates().toArray()[0];
+        int currentstate = (Integer) match.getCurrentStates().toArray()[0];
         int times = 0;
-        boolean isfinalstate = true;
         for (int i = 0; i < input.length(); i++) {
             int judge;
             if (i <= 1)
@@ -245,7 +245,7 @@ public class Regex {
 
             if (judge == 0) {
                 if (!match.accept(input.charAt(i))) {
-                    if (times < lower_bound || times > upper_bound){
+                    if (times < lower_bound || times > upper_bound) {
                         break;
                     } else {
                         i--;
@@ -256,34 +256,51 @@ public class Regex {
                         match.getCurrentStates().clear();
                         match.getCurrentStates().add(currentstate);
                     }
-                }else{
+                } else {
                     times++;
-                    if (times < lower_bound){
+                    if (times < lower_bound) {
                         match.getCurrentStates().clear();
                         match.getCurrentStates().add(currentstate);
-                        i --;
+                        i--;
                     }
                 }
             } else if (judge == 1) {
                 if (!acceptZeroOrMore(input.substring(i)))
-                    isfinalstate = false;
-                break;
+
+                    break;
             } else if (judge == 2) {
                 if (!acceptZeroOrOne(input.substring(i)))
-                    isfinalstate = false;
-                break;
+
+                    break;
             } else if (judge == 3) {
                 if (!acceptOneOrMore(input.substring(i)))
-                    isfinalstate = false;
-                break;
+
+                    break;
             } else if (judge == 4) {
                 int concat_state = match.acceptConcat(input.substring(i));
                 if (concat_state == 0) {
-                    isfinalstate = false;
-                    break;
+                    if (times < lower_bound || times > upper_bound) {
+                        break;
+                    } else {
+                        i--;
+                        if (upper_bound == Integer.MAX_VALUE)
+                            times = input.length();
+                        else
+                            times = upper_bound + 1;
+                        match.getCurrentStates().clear();
+                        match.getCurrentStates().add(currentstate);
+                    }
                 } else {
-                    i = i + concat_state - 1;
+                    times++;
+                    if (times < lower_bound) {
+                        match.getCurrentStates().clear();
+                        match.getCurrentStates().add(currentstate);
+                        i--;
+                    } else {
+                        i = i + concat_state - 1;
+                    }
                 }
+
             } else
                 throw new SyntaxError("don't support it");
 
@@ -293,13 +310,155 @@ public class Regex {
 
     // TODO
     // 匹配 +
-    public boolean acceptOneOrMore(String input) {
-        return true;
+    public boolean acceptOneOrMore(String input) throws SyntaxError {
+        int currentstate = (Integer) match.getCurrentStates().toArray()[0];
+        int times = 0;
+        boolean is_match = false;
+        for (int i = 0; i < input.length(); i++) {
+            int judge;
+            if (i <= 1)
+                judge = judgeFunction(3);
+            else
+                judge = judgeFunction(0);
+
+            if (judge == 0) {
+                if (!match.accept(input.charAt(i))) {
+                    if (times < 1) {
+                        break;
+                    } else {
+                        i = i - 2;
+                        is_match = true;
+                        match.getCurrentStates().clear();
+                        match.getCurrentStates().add(currentstate);
+                    }
+                } else {
+                    if (!is_match) {
+                        times++;
+                        if (times >= input.length()) {
+                            break;
+                        } else {
+                            match.getCurrentStates().clear();
+                            match.getCurrentStates().add(currentstate);
+                            i--;
+                        }
+                    }
+                }
+            } else if (judge == 1) {
+                if (!acceptZeroOrMore(input.substring(i)))
+
+                    break;
+            } else if (judge == 2) {
+                if (!acceptZeroOrOne(input.substring(i)))
+
+                    break;
+            } else if (judge == 3) {
+                if (!acceptOneOrMore(input.substring(i)))
+
+                    break;
+            } else if (judge == 4) {
+                int concat_state = match.acceptConcat(input.substring(i));
+//                if (concat_state == 0) {
+//                    if (times < lower_bound || times > upper_bound) {
+//                        break;
+//                    } else {
+//                        i--;
+//                        if (upper_bound == Integer.MAX_VALUE)
+//                            times = input.length();
+//                        else
+//                            times = upper_bound + 1;
+//                        match.getCurrentStates().clear();
+//                        match.getCurrentStates().add(currentstate);
+//                    }
+//                } else {
+//                    times++;
+//                    if (times < lower_bound) {
+//                        match.getCurrentStates().clear();
+//                        match.getCurrentStates().add(currentstate);
+//                        i--;
+//                    } else {
+//                        i = i + concat_state - 1;
+//                    }
+//                }
+
+            } else
+                throw new SyntaxError("don't support it");
+
+        }
+        return match.isOnFinalState();
     }
 
     // TODO
     // 匹配 *
-    public boolean acceptZeroOrMore(String input) {
-        return true;
+    public boolean acceptZeroOrMore(String input) throws SyntaxError {
+        int currentstate = (Integer) match.getCurrentStates().toArray()[0];
+        boolean is_match = false;
+        int times = 0;
+        for (int i = 0; i < input.length(); i++) {
+            int judge;
+            if (i <= 1)
+                judge = judgeFunction(1);
+            else
+                judge = judgeFunction(0);
+
+            if (judge == 0) {
+                if (!match.accept(input.charAt(i))) {
+                    i = i - 1;
+                    is_match = true;
+                    match.getCurrentStates().clear();
+                    match.getCurrentStates().add(currentstate + 1);
+                } else {
+                    times++;
+                    if (!is_match) {
+                        if (times >= input.length()) {
+                            break;
+                        } else {
+                            match.getCurrentStates().clear();
+                            match.getCurrentStates().add(currentstate);
+                            i--;
+                        }
+                    }
+                }
+            } else if (judge == 1) {
+                if (!acceptZeroOrMore(input.substring(i)))
+
+                    break;
+            } else if (judge == 2) {
+                if (!acceptZeroOrOne(input.substring(i)))
+
+                    break;
+            } else if (judge == 3) {
+                if (!acceptOneOrMore(input.substring(i)))
+
+                    break;
+            } else if (judge == 4) {
+                int concat_state = match.acceptConcat(input.substring(i));
+//                if (concat_state == 0) {
+//                    if (times < lower_bound || times > upper_bound) {
+//                        break;
+//                    } else {
+//                        i--;
+//                        if (upper_bound == Integer.MAX_VALUE)
+//                            times = input.length();
+//                        else
+//                            times = upper_bound + 1;
+//                        match.getCurrentStates().clear();
+//                        match.getCurrentStates().add(currentstate);
+//                    }
+//                } else {
+//                    times++;
+//                    if (times < lower_bound) {
+//                        match.getCurrentStates().clear();
+//                        match.getCurrentStates().add(currentstate);
+//                        i--;
+//                    } else {
+//                        i = i + concat_state - 1;
+//                    }
+//                }
+
+            } else
+                throw new SyntaxError("don't support it");
+
+        }
+        return match.isOnFinalState();
     }
 }
