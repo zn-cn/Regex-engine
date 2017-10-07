@@ -148,7 +148,8 @@ public class Compile {
 
     // 编译{} 前面有个无宽度跳转，判断多少次，将所含input split(",")即可获得两个数字
     private int compileMatchTimes(MatchTimesNode tree, int startId) throws SyntaxError {
-        chart.addConnection(startId, startId, tree.getLowwer_bound() + "," + tree.getUpper_bound());
+        chart.addConnection(startId, tree.getLower_bound(), null);
+        chart.addConnection(startId, tree.getUpper_bound(), null);
         chart.addConnection(startId, startId, "{}");
         return compile(tree.getNode(), startId);
     }

@@ -26,12 +26,12 @@ public class MatchTimesNode implements ASTNode{
         return String.valueOf("{" + String.valueOf(upper_bound) + ", " + String.valueOf(lower_bound) + "}");
     }
 
-    public String getLowwer_bound() {
-        return String.valueOf(this.lower_bound);
+    public int getLower_bound() {
+        return this.lower_bound;
     }
 
-    public String getUpper_bound(){
-        return String.valueOf(this.upper_bound);
+    public int getUpper_bound(){
+        return this.upper_bound;
     }
 
     public  ASTNode getNode(){
