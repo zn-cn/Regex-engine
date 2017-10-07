@@ -169,7 +169,6 @@ class Parse private constructor(private val input: String) {
         return tokens
     }
 
-
     @Throws(SyntaxError::class)
     private fun parseConcat(): Boolean {
         while (parseZeroOrMore() || parseOneOrMore() || parseZeroOrOne() || parseSegment()) {
@@ -293,7 +292,7 @@ class Parse private constructor(private val input: String) {
                     val lower_bound = options.removeAt(options.size - 1) as CharNode
                     val lower_char = lower_bound.char
                     val upper_char = ch[0]
-                    if (lower_char.toByte() < upper_char.toByte() && (lower_char.toByte() > 96 && upper_char.toByte() < 123 ||
+                    if (lower_char.toByte() <= upper_char.toByte() && (lower_char.toByte() > 96 && upper_char.toByte() < 123 ||
                             lower_char.toByte() > 64 && upper_char.toByte() < 91 ||
                             lower_char.toByte() > 47 && upper_char.toByte() < 58)) {
                         options.add(One_CharNode(lower_char, upper_char))
@@ -330,7 +329,7 @@ class Parse private constructor(private val input: String) {
             }
         }
         if (comma) {
-            val temp = times.split(",".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
+            val temp = times.split(",".toRegex()).dropLastWhile({ it.isEmpty() }).toTypedArray()
             if (temp.size == 2)
                 stack.push(MatchTimesNode(temp[0], temp[1], stack.pop()))
             else if (temp.size == 1)
@@ -395,7 +394,6 @@ class Parse private constructor(private val input: String) {
         } else
             return false
     }
-
 
     // 判断tokens是否为空，否则返回 true
     private fun moreCode(): Boolean {

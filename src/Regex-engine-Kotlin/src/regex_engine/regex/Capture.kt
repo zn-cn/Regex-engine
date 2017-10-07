@@ -1,27 +1,24 @@
 package regex_engine.regex
 
+import regex_engine.compile.Compile
 import regex_engine.parse.Parse
 import regex_engine.parse.SyntaxError
-import regex_engine.compile.Compile
 
+import java.util.ArrayList
 import java.util.HashMap
 import java.util.HashSet
 
-class Regex @Throws(SyntaxError::class)
+class Capture @Throws(SyntaxError::class)
 constructor(private val regex: String) {
     private val match: StateMatch
+    private val captures = ArrayList<String>()
 
     init {
         match = StateMatch(Compile.compile(Parse.parse(regex)))
     }
 
-    override fun toString(): String {
-        return "/$regex/"
-    }
-
-    // 正则匹配
     @Throws(SyntaxError::class)
-    private fun matches(input: String): Boolean {
+    fun matchAndCapture(input: String): ArrayList<String> {
         var isfinalstate = true
         var i = 0
         while (i < input.length) {
@@ -44,12 +41,15 @@ constructor(private val regex: String) {
                     isfinalstate = false
                 break
             } else if (judge == 4) {
-                val concat_state = match.acceptConcat(input.substring(i))
-                if (concat_state == 0) {
+                val capture = match.captureString(input.substring(i))
+
+                if (capture.containsKey(true)) {
+                    captures.add(input.substring(i, i + capture[true]))
+                    i = i + capture[true] - 1
+
+                } else {
                     isfinalstate = false
                     break
-                } else {
-                    i = i + concat_state - 1
                 }
             } else if (judge == 5) {
                 if (!acceptOneCharRange(input.substring(i)))
@@ -58,20 +58,17 @@ constructor(private val regex: String) {
             } else
                 throw SyntaxError("The engine has some problems.")
             i++
-
         }
 
         if (isfinalstate && match.isOnFinalState)
             isfinalstate = true
         //        boolean result = match.isOnFinalState();
         match.reset()
-        return isfinalstate
-    }
-
-    // 测试匹配
-    @Throws(SyntaxError::class)
-    fun test(input: String) {
-        println(input + ": " + this.matches(input))
+        return if (isfinalstate) {
+            captures
+        } else {
+            throw SyntaxError("The regex doesn't match your string.")
+        }
     }
 
     @Throws(SyntaxError::class)
@@ -182,8 +179,8 @@ constructor(private val regex: String) {
                 } else
                     throw SyntaxError("Invalid syntax.")
             } else if (judge == 4) {
-                val concat_state = match.acceptConcat(input.substring(i))
-                if (concat_state == 0) {
+                val capture = match.captureString(input.substring(i))
+                if (capture.containsKey(false)) {
                     if (times == 0) {
                         match.currentStates!!.clear()
                         match.currentStates!!.add(bound)
@@ -192,7 +189,8 @@ constructor(private val regex: String) {
                     } else
                         break
                 } else {
-                    i = i + concat_state - 1
+                    captures.add(input.substring(i, i + capture[true]))
+                    i = i + capture[true] - 1
                 }
             } else if (judge == 5) {
                 if (times != 0) {
@@ -264,8 +262,9 @@ constructor(private val regex: String) {
 
                     break
             } else if (judge == 4) {
+                val capture = match.captureString(input.substring(i))
                 val concat_state = match.acceptConcat(input.substring(i))
-                if (concat_state == 0) {
+                if (capture.containsKey(false)) {
                     if (times < lower_bound || times > upper_bound) {
                         break
                     } else {
@@ -283,6 +282,7 @@ constructor(private val regex: String) {
                         match.currentStates!!.clear()
                         match.currentStates!!.add(currentstate)
                     }
+                    captures.add(input.substring(i, i + capture[true]))
                     i = i + concat_state - 1
                 }
 
@@ -349,8 +349,8 @@ constructor(private val regex: String) {
                 } else
                     throw SyntaxError("Invalid syntax.")
             } else if (judge == 4) {
-                val concat_state = match.acceptConcat(input.substring(i))
-                if (concat_state == 0) {
+                val capture = match.captureString(input.substring(i))
+                if (capture.containsKey(false)) {
                     if (times < 1) {
                         break
                     } else {
@@ -360,6 +360,8 @@ constructor(private val regex: String) {
                         match.currentStates!!.add(match.stateChart.connections[currentstate].get("++").toTypedArray()[0] as Int)
                     }
                 } else {
+                    captures.add(input.substring(i, i + capture[true]))
+                    i = i + capture[true] - 1
                     if (!is_match) {
                         times++
                         if (times >= input.length) {
@@ -369,7 +371,6 @@ constructor(private val regex: String) {
                             match.currentStates!!.add(currentstate)
                         }
                     }
-                    i = i + concat_state - 1
                 }
 
             } else if (judge == 5) {
@@ -434,13 +435,15 @@ constructor(private val regex: String) {
                 } else
                     throw SyntaxError("Invalid syntax.")
             } else if (judge == 4) {
-                val concat_state = match.acceptConcat(input.substring(i))
-                if (concat_state == 0) {
+                val capture = match.captureString(input.substring(i))
+                if (capture.containsKey(false)) {
                     i = i - 1
                     is_match = true
                     match.currentStates!!.clear()
                     match.currentStates!!.add(match.stateChart.connections[currentstate].get("()").toTypedArray()[0] as Int)
                 } else {
+                    captures.add(input.substring(i, i + capture[true]))
+                    i = i + capture[true] - 1
                     if (!is_match) {
                         times++
                         if (times >= input.length) {
@@ -451,7 +454,6 @@ constructor(private val regex: String) {
                             //                            i--;
                         }
                     }
-                    i = i + concat_state - 1
                 }
             } else if (judge == 5) {
                 if (is_match) {

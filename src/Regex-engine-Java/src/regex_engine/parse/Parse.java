@@ -326,7 +326,7 @@ public class Parse {
                     CharNode lower_bound = (CharNode) options.remove(options.size() - 1);
                     char lower_char = lower_bound.getChar();
                     char upper_char = ch.charAt(0);
-                    if (((byte) lower_char < (byte) upper_char) &&
+                    if (((byte) lower_char <= (byte) upper_char) &&
                             ((byte) lower_char > 96 && ((byte) upper_char < 123) ||
                                     ((byte) lower_char > 64 && (byte) upper_char < 91) ||
                                     ((byte) lower_char > 47 && (byte) upper_char < 58))) {

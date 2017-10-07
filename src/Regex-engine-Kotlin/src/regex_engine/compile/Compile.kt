@@ -1,6 +1,7 @@
 package regex_engine.compile
 
 import java.util.ArrayList
+import java.util.HashSet
 
 import com.sun.org.apache.bcel.internal.generic.BREAKPOINT
 import regex_engine.parse.SyntaxError
@@ -20,6 +21,8 @@ class Compile private constructor(private val astnode: ArrayList<ASTNode>) {
         for (node in astnode) {
             finalstate = compile(node, finalstate)
         }
+        if (chart.connections[finalstate - 1].containsKey("$$"))
+            finalstate = finalstate - 1
         chart.addFinalState(finalstate)
         return chart
     }
@@ -58,10 +61,11 @@ class Compile private constructor(private val astnode: ArrayList<ASTNode>) {
         // ESCNode ^ $ \\w \\s \\d .
             compileESCNode(tree as ESCNode?, startId)
         else {
-            throw UnsupportedOperationException("can't compile " + tree!!.javaClass.name + "'s yet")
+            throw UnsupportedOperationException("can't compile " + tree!!.javaClass.getName() + "'s yet")
         }
     }
 
+    // (|)
     @Throws(SyntaxError::class)
     private fun compileConcat(tree: ConcatNode, startId: Int): Int {
         var endId = startId
@@ -71,10 +75,16 @@ class Compile private constructor(private val astnode: ArrayList<ASTNode>) {
             endIds.add(endId)
         }
         // ()中的| 若已经满足直接跳到最后,此为第二个链接
-        if (endIds.size > 1)
-            for (i in 0..endIds.size - 1 - 1) {
-                chart.addBlankConnection(endIds[i], endId)
-            }
+
+        for (i in endIds) {
+            chart.addConnection(i, endId, "))")
+        }
+        //        chart.getConnections().get(endId).remove("))");
+        //        HashSet<Integer> temp = new HashSet<>();
+        //        temp.add(endId + 1);
+        //        chart.getConnections().get(endId).put("))", temp);
+
+        chart.addConnection(startId, endId, "()")
         return endId
     }
 
@@ -83,7 +93,7 @@ class Compile private constructor(private val astnode: ArrayList<ASTNode>) {
     private fun compileZeroOrOne(tree: ZeroOrOneNode, startId: Int): Int {
         val endId = compile(tree.node, startId)
         //		chart.addBlankConnection(startId,endId);
-        chart.connections[startId].remove(null)
+        //        chart.getConnections().get(startId).remove(null);
         chart.addConnection(startId, endId, "??")
         return endId
     }
@@ -93,7 +103,7 @@ class Compile private constructor(private val astnode: ArrayList<ASTNode>) {
     private fun compileZeroOrMore(tree: ZeroOrMoreNode, startId: Int): Int {
         val endId = compile(tree.node, startId)
         //		chart.addBlankConnection(startId,endId);
-        chart.connections[startId].remove(null)
+        //        chart.getConnections().get(startId).remove(null);
         chart.addConnection(startId, endId, "**")
         return endId
     }
@@ -103,7 +113,7 @@ class Compile private constructor(private val astnode: ArrayList<ASTNode>) {
     private fun compileOneOrMore(tree: OneOrMoreNode, startId: Int): Int {
         val endId = compile(tree.node, startId)
         //		chart.addBlankConnection(startId,endId);
-        chart.connections[startId].remove(null)
+        //        chart.getConnections().get(startId).remove(null);
         chart.addConnection(startId, endId, "++")
         return endId
     }
@@ -112,21 +122,18 @@ class Compile private constructor(private val astnode: ArrayList<ASTNode>) {
     @Throws(SyntaxError::class)
     private fun compileOneCharRange(tree: OneCharRangeNode, startId: Int): Int {
         var endId = startId
-        val endIds = ArrayList<Int>()
         for (node in tree.options!!) {
-            endIds.add(endId)
             endId = compile(node, endId)
         }
-        for (i in endIds) {
-            chart.addBlankConnection(i, endId)
-        }
+        chart.addConnection(startId, endId, "[]")
         return endId
     }
 
-    // 编译[]里面的  如： a-z 1-8, 判断范围将所含input split("-")即可获得范围
+    // 编译[]里面的  如： a-z 1-8
     @Throws(SyntaxError::class)
     private fun compileOne_Char(tree: One_CharNode, startId: Int): Int {
-        chart.addConnection(startId, startId + 1, tree.lower_bound + "-" + tree.upper_bound)
+        chart.addConnection(startId, tree.lower_bound.toByte().toInt(), null)
+        chart.addConnection(startId, tree.upper_bound.toByte().toInt(), null)
         return startId + 1
     }
 
@@ -147,7 +154,9 @@ class Compile private constructor(private val astnode: ArrayList<ASTNode>) {
     // 编译{} 前面有个无宽度跳转，判断多少次，将所含input split(",")即可获得两个数字
     @Throws(SyntaxError::class)
     private fun compileMatchTimes(tree: MatchTimesNode, startId: Int): Int {
-        chart.addConnection(startId, startId, tree.lowwer_bound + "," + tree.upper_bound)
+        chart.addConnection(startId, tree.lower_bound, "}}")
+        chart.addConnection(startId, tree.upper_bound, "}}")
+        chart.addConnection(startId, startId, "{}")
         return compile(tree.node, startId)
     }
 

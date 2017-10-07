@@ -2,8 +2,10 @@ package regex_engine.parse.astnode
 
 // {lower_bound, upper_bound}
 class MatchTimesNode : ASTNode {
-    private var upper_bound: Int = 0
-    private var lower_bound: Int = 0
+    var upper_bound: Int = 0
+        private set
+    var lower_bound: Int = 0
+        private set
     var node: ASTNode? = null
         private set   // {}之前的ASTNode
 
@@ -27,12 +29,5 @@ class MatchTimesNode : ASTNode {
 
     override fun toString(): String {
         return ("{" + upper_bound.toString() + ", " + lower_bound.toString() + "}").toString()
-    }
-
-    val lowwer_bound: String
-        get() = this.lower_bound.toString()
-
-    fun getUpper_bound(): String {
-        return this.upper_bound.toString()
     }
 }

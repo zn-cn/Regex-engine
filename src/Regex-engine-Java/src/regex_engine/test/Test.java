@@ -11,11 +11,11 @@ public class Test {
         try {
 //           Regex r = new Regex("^You are(n't)? af*(dfa)+(dfa|nfa)(ZN|WSS|CXY|LQM)[adfc-g1-8]b{12,56}\\w\n$");
 //            Regex r = new Regex("^I (am){1,2} (tn|zh)(aon)?[a-z][n]\\.\\w\n\\d$");
-            Regex r = new Regex("a*");
+//            Regex r = new Regex("f[dfa]*gf");
 
-//            Capture c = new Capture("^I am (tn|zh|cd)(aon)[a-z][n]\\.\\w\n\\d$");
-//            System.out.println(c.matchAndCapture("I am zhaonan.w\n8").get(1));
-            r.test("aaa");
+            Capture c = new Capture("()+\nta");
+            System.out.println(c.matchAndCapture("fdta\nta").get(1));
+//            r.test("fdfagf");
 //            r.test("I am zhan.w\n8");
         } catch (SyntaxError e) {
             e.printStackTrace();

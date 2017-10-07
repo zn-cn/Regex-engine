@@ -83,7 +83,7 @@ public class StateChart {
                 }
             } else if (connections.get(state).containsKey("\\w")) {
                 byte temp = (byte) input.charAt(0);
-                if (temp == 45 || (temp > 96 && temp < 123) || (temp > 64 && temp < 91) || (temp > 47 && temp < 58)) {
+                if (temp == 95 || (temp > 96 && temp < 123) || (temp > 64 && temp < 91) || (temp > 47 && temp < 58)) {
                     result.put(true, connections.get(state).get("\\w"));
                 } else {
                     result.put(false, new HashSet<>());
@@ -119,11 +119,12 @@ public class StateChart {
                     {
                         lower = (Integer)connections.get(i).get(null).toArray()[0];
                         upper = (Integer)connections.get(i).get(null).toArray()[0];
-
-                        if ((Integer)connections.get(i).get(null).toArray()[0] < (Integer)connections.get(i).get(null).toArray()[1]){
-                            upper = (Integer)connections.get(i).get(null).toArray()[1];
-                        } else {
-                            lower = (Integer)connections.get(i).get(null).toArray()[1];
+                        if (connections.get(i).get(null).toArray().length > 1){
+                            if ((Integer)connections.get(i).get(null).toArray()[0] < (Integer)connections.get(i).get(null).toArray()[1]){
+                                upper = (Integer)connections.get(i).get(null).toArray()[1];
+                            } else {
+                                lower = (Integer)connections.get(i).get(null).toArray()[1];
+                            }
                         }
                         if (ascii_input >= lower && ascii_input <= upper){
                             HashSet<Integer> temp = new HashSet<>();

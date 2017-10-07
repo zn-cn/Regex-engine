@@ -93,7 +93,7 @@ public class Compile {
     private int compileZeroOrOne(ZeroOrOneNode tree, int startId) throws SyntaxError {
         int endId = compile(tree.getNode(), startId);
 //		chart.addBlankConnection(startId,endId);
-        chart.getConnections().get(startId).remove(null);
+//        chart.getConnections().get(startId).remove(null);
         chart.addConnection(startId, endId, "??");
         return endId;
     }
@@ -102,7 +102,7 @@ public class Compile {
     private int compileZeroOrMore(ZeroOrMoreNode tree, int startId) throws SyntaxError {
         int endId = compile(tree.getNode(), startId);
 //		chart.addBlankConnection(startId,endId);
-        chart.getConnections().get(startId).remove(null);
+//        chart.getConnections().get(startId).remove(null);
         chart.addConnection(startId, endId, "**");
         return endId;
     }
@@ -111,7 +111,7 @@ public class Compile {
     private int compileOneOrMore(OneOrMoreNode tree, int startId) throws SyntaxError {
         int endId = compile(tree.getNode(), startId);
 //		chart.addBlankConnection(startId,endId);
-        chart.getConnections().get(startId).remove(null);
+//        chart.getConnections().get(startId).remove(null);
         chart.addConnection(startId, endId, "++");
         return endId;
     }
@@ -148,8 +148,8 @@ public class Compile {
 
     // 编译{} 前面有个无宽度跳转，判断多少次，将所含input split(",")即可获得两个数字
     private int compileMatchTimes(MatchTimesNode tree, int startId) throws SyntaxError {
-        chart.addConnection(startId, tree.getLower_bound(), null);
-        chart.addConnection(startId, tree.getUpper_bound(), null);
+        chart.addConnection(startId, tree.getLower_bound(), "}}");
+        chart.addConnection(startId, tree.getUpper_bound(), "}}");
         chart.addConnection(startId, startId, "{}");
         return compile(tree.getNode(), startId);
     }
